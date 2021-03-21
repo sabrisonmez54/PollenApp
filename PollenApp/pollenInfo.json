@@ -1,0 +1,54 @@
+[
+	{
+		"text": "Ragweed",
+        "children": [
+            {
+                "text": "       Ragweed is a weed that grows throughout the United States, especially in the Eastern and Midwestern states. Each plant lives only one season. But that one plant can produce up to 1 billion pollen grains.\n      Ragweed usually grows in rural areas. Near the plants, the pollen counts are highest right after dawn. Rain and morning temperatures below 50 degrees Fahrenheit slow down the release of pollen. Ragweed pollen can travel far. \n      It has been found in the air 400 miles out to sea and two miles up in the atmosphere. But most falls close to its source. Turf grasses and other perennial plants easily overgrow ragweed. But where streams of water, farming or chemicals upset the soil – like salting roads in the winter – ragweed will grow.\n        It is often found along roadsides, riverbanks, in vacant lots and fields. Dormant seeds that live in the soil for decades may grow when the conditions are right."
+            }
+        ]
+	},
+	{
+		"text": "Oak",
+        "children": [
+            {
+                "text": "Lorem ipsum"
+            }
+        ]
+	},{
+        "text": "Fern Spores",
+        "children": [
+            {
+                "text": "Lorem Ipsum"
+            }
+        ]
+    },{
+        "text": "Hickory",
+        "children": [
+            {
+                "text": "Lorem Ipsum"
+            }
+        ]
+    },{
+        "text": "Mugwort",
+        "children": [
+            {
+                "text": "Lorem Ipsum"
+            }
+        ]
+    },{
+        "text": "Asters",
+        "children": [
+            {
+                "text": "Lorem Ipsum"
+            }
+        ]
+    },
+    {
+        "text": "Cypress",
+        "children": [
+            {
+                "text": "Lorem Ipsum"
+            }
+        ]
+    },
+]
