@@ -86,23 +86,25 @@ struct DetailView: View {
     
     var body: some View {
         VStack{
-            ScrollView{
+            
                 Image(image)
                     .resizable()
                     .scaledToFit()
                         
                 Text(date, style: .date)
                 Text(pollenName)
-                Text("\(pollenCount, specifier: "%.2f") pcm")
+                Text("\(pollenCount, specifier: "%.1f") pcm")
                 
                 HStack{
-                    BarChartView(data: ChartData(values: [("May 10, 2020",6.0), ("2019 Q1",50900), ("2019 Q2",77550), ("2019 Q3",79600), ("2019 Q4",92550)]), title: "Pollen Count", legend: "particles per cubic meter of air", dropShadow: false )
-                    PieChartView(labels: ["oak","honey","ragweed","hickory","mugwort","no pollen"],data: [8,23,54,32], title: "Pollen Types", legend: "Percent of Pollen",dropShadow: false)
+                    BarChartView(data: ChartData(values: [("May 10, 2020", 6.0), ("October 21, 2019", 2.0), ("October 20, 2019", 4.0), ("October 19, 2019", 1.0), ("October 18, 2019", 8.0)]), title: "Pollen Count", legend: "particles per cubic meter of air", dropShadow: false )
+                    PieChartView(labels: ["Ragweed","Mugwort"],data: [67,33], title: "Pollen Types", legend: "Percent of Pollen",dropShadow: false)
                 }
                 
+
+
                 
                 Spacer()
-            }
+            
           
             
         }
