@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1EEA4C212607A6C5008B4F81 /* PollenAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEA4C202607A6C5008B4F81 /* PollenAppApp.swift */; };
+		1EEA4C232607A6C5008B4F81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEA4C222607A6C5008B4F81 /* ContentView.swift */; };
+		1EEA4C252607A6C6008B4F81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EEA4C242607A6C6008B4F81 /* Assets.xcassets */; };
+		1EEA4C282607A6C6008B4F81 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EEA4C272607A6C6008B4F81 /* Preview Assets.xcassets */; };
+		1EEA4C332607A6C6008B4F81 /* PollenAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEA4C322607A6C6008B4F81 /* PollenAppTests.swift */; };
+		1EEA4C3E2607A6C6008B4F81 /* PollenAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEA4C3D2607A6C6008B4F81 /* PollenAppUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1EEA4C2F2607A6C6008B4F81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1EEA4C152607A6C5008B4F81 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1EEA4C1C2607A6C5008B4F81;
+			remoteInfo = PollenApp;
+		};
+		1EEA4C3A2607A6C6008B4F81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1EEA4C152607A6C5008B4F81 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1EEA4C1C2607A6C5008B4F81;
+			remoteInfo = PollenApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1EEA4C1D2607A6C5008B4F81 /* PollenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PollenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EEA4C202607A6C5008B4F81 /* PollenAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollenAppApp.swift; sourceTree = "<group>"; };
+		1EEA4C222607A6C5008B4F81 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1EEA4C242607A6C6008B4F81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1EEA4C272607A6C6008B4F81 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1EEA4C292607A6C6008B4F81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EEA4C2E2607A6C6008B4F81 /* PollenAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PollenAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EEA4C322607A6C6008B4F81 /* PollenAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollenAppTests.swift; sourceTree = "<group>"; };
+		1EEA4C342607A6C6008B4F81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EEA4C392607A6C6008B4F81 /* PollenAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PollenAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EEA4C3D2607A6C6008B4F81 /* PollenAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollenAppUITests.swift; sourceTree = "<group>"; };
+		1EEA4C3F2607A6C6008B4F81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1EEA4C1A2607A6C5008B4F81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EEA4C2B2607A6C6008B4F81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EEA4C362607A6C6008B4F81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1EEA4C142607A6C5008B4F81 = {
+			isa = PBXGroup;
+			children = (
+				1EEA4C1F2607A6C5008B4F81 /* PollenApp */,
+				1EEA4C312607A6C6008B4F81 /* PollenAppTests */,
+				1EEA4C3C2607A6C6008B4F81 /* PollenAppUITests */,
+				1EEA4C1E2607A6C5008B4F81 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1EEA4C1E2607A6C5008B4F81 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1EEA4C1D2607A6C5008B4F81 /* PollenApp.app */,
+				1EEA4C2E2607A6C6008B4F81 /* PollenAppTests.xctest */,
+				1EEA4C392607A6C6008B4F81 /* PollenAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1EEA4C1F2607A6C5008B4F81 /* PollenApp */ = {
+			isa = PBXGroup;
+			children = (
+				1EEA4C202607A6C5008B4F81 /* PollenAppApp.swift */,
+				1EEA4C222607A6C5008B4F81 /* ContentView.swift */,
+				1EEA4C242607A6C6008B4F81 /* Assets.xcassets */,
+				1EEA4C292607A6C6008B4F81 /* Info.plist */,
+				1EEA4C262607A6C6008B4F81 /* Preview Content */,
+			);
+			path = PollenApp;
+			sourceTree = "<group>";
+		};
+		1EEA4C262607A6C6008B4F81 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1EEA4C272607A6C6008B4F81 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1EEA4C312607A6C6008B4F81 /* PollenAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				1EEA4C322607A6C6008B4F81 /* PollenAppTests.swift */,
+				1EEA4C342607A6C6008B4F81 /* Info.plist */,
+			);
+			path = PollenAppTests;
+			sourceTree = "<group>";
+		};
+		1EEA4C3C2607A6C6008B4F81 /* PollenAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1EEA4C3D2607A6C6008B4F81 /* PollenAppUITests.swift */,
+				1EEA4C3F2607A6C6008B4F81 /* Info.plist */,
+			);
+			path = PollenAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1EEA4C1C2607A6C5008B4F81 /* PollenApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1EEA4C422607A6C6008B4F81 /* Build configuration list for PBXNativeTarget "PollenApp" */;
+			buildPhases = (
+				1EEA4C192607A6C5008B4F81 /* Sources */,
+				1EEA4C1A2607A6C5008B4F81 /* Frameworks */,
+				1EEA4C1B2607A6C5008B4F81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PollenApp;
+			productName = PollenApp;
+			productReference = 1EEA4C1D2607A6C5008B4F81 /* PollenApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1EEA4C2D2607A6C6008B4F81 /* PollenAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1EEA4C452607A6C6008B4F81 /* Build configuration list for PBXNativeTarget "PollenAppTests" */;
+			buildPhases = (
+				1EEA4C2A2607A6C6008B4F81 /* Sources */,
+				1EEA4C2B2607A6C6008B4F81 /* Frameworks */,
+				1EEA4C2C2607A6C6008B4F81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1EEA4C302607A6C6008B4F81 /* PBXTargetDependency */,
+			);
+			name = PollenAppTests;
+			productName = PollenAppTests;
+			productReference = 1EEA4C2E2607A6C6008B4F81 /* PollenAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1EEA4C382607A6C6008B4F81 /* PollenAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1EEA4C482607A6C6008B4F81 /* Build configuration list for PBXNativeTarget "PollenAppUITests" */;
+			buildPhases = (
+				1EEA4C352607A6C6008B4F81 /* Sources */,
+				1EEA4C362607A6C6008B4F81 /* Frameworks */,
+				1EEA4C372607A6C6008B4F81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1EEA4C3B2607A6C6008B4F81 /* PBXTargetDependency */,
+			);
+			name = PollenAppUITests;
+			productName = PollenAppUITests;
+			productReference = 1EEA4C392607A6C6008B4F81 /* PollenAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1EEA4C152607A6C5008B4F81 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					1EEA4C1C2607A6C5008B4F81 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					1EEA4C2D2607A6C6008B4F81 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 1EEA4C1C2607A6C5008B4F81;
+					};
+					1EEA4C382607A6C6008B4F81 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 1EEA4C1C2607A6C5008B4F81;
+					};
+				};
+			};
+			buildConfigurationList = 1EEA4C182607A6C5008B4F81 /* Build configuration list for PBXProject "PollenApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1EEA4C142607A6C5008B4F81;
+			productRefGroup = 1EEA4C1E2607A6C5008B4F81 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1EEA4C1C2607A6C5008B4F81 /* PollenApp */,
+				1EEA4C2D2607A6C6008B4F81 /* PollenAppTests */,
+				1EEA4C382607A6C6008B4F81 /* PollenAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1EEA4C1B2607A6C5008B4F81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EEA4C282607A6C6008B4F81 /* Preview Assets.xcassets in Resources */,
+				1EEA4C252607A6C6008B4F81 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EEA4C2C2607A6C6008B4F81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EEA4C372607A6C6008B4F81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1EEA4C192607A6C5008B4F81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EEA4C232607A6C5008B4F81 /* ContentView.swift in Sources */,
+				1EEA4C212607A6C5008B4F81 /* PollenAppApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EEA4C2A2607A6C6008B4F81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EEA4C332607A6C6008B4F81 /* PollenAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EEA4C352607A6C6008B4F81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EEA4C3E2607A6C6008B4F81 /* PollenAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1EEA4C302607A6C6008B4F81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1EEA4C1C2607A6C5008B4F81 /* PollenApp */;
+			targetProxy = 1EEA4C2F2607A6C6008B4F81 /* PBXContainerItemProxy */;
+		};
+		1EEA4C3B2607A6C6008B4F81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1EEA4C1C2607A6C5008B4F81 /* PollenApp */;
+			targetProxy = 1EEA4C3A2607A6C6008B4F81 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1EEA4C402607A6C6008B4F81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1EEA4C412607A6C6008B4F81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1EEA4C432607A6C6008B4F81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"PollenApp/Preview Content\"";
+				DEVELOPMENT_TEAM = R7DR32825H;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = PollenApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sabri.PollenApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1EEA4C442607A6C6008B4F81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"PollenApp/Preview Content\"";
+				DEVELOPMENT_TEAM = R7DR32825H;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = PollenApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sabri.PollenApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1EEA4C462607A6C6008B4F81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R7DR32825H;
+				INFOPLIST_FILE = PollenAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sabri.PollenAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PollenApp.app/PollenApp";
+			};
+			name = Debug;
+		};
+		1EEA4C472607A6C6008B4F81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R7DR32825H;
+				INFOPLIST_FILE = PollenAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sabri.PollenAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PollenApp.app/PollenApp";
+			};
+			name = Release;
+		};
+		1EEA4C492607A6C6008B4F81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R7DR32825H;
+				INFOPLIST_FILE = PollenAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sabri.PollenAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PollenApp;
+			};
+			name = Debug;
+		};
+		1EEA4C4A2607A6C6008B4F81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R7DR32825H;
+				INFOPLIST_FILE = PollenAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sabri.PollenAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PollenApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1EEA4C182607A6C5008B4F81 /* Build configuration list for PBXProject "PollenApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EEA4C402607A6C6008B4F81 /* Debug */,
+				1EEA4C412607A6C6008B4F81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1EEA4C422607A6C6008B4F81 /* Build configuration list for PBXNativeTarget "PollenApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EEA4C432607A6C6008B4F81 /* Debug */,
+				1EEA4C442607A6C6008B4F81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1EEA4C452607A6C6008B4F81 /* Build configuration list for PBXNativeTarget "PollenAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EEA4C462607A6C6008B4F81 /* Debug */,
+				1EEA4C472607A6C6008B4F81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1EEA4C482607A6C6008B4F81 /* Build configuration list for PBXNativeTarget "PollenAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EEA4C492607A6C6008B4F81 /* Debug */,
+				1EEA4C4A2607A6C6008B4F81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1EEA4C152607A6C5008B4F81 /* Project object */;
+}
