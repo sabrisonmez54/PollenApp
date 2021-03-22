@@ -45,7 +45,7 @@ public struct PieChartView : View {
     public var body: some View {
         ZStack{
             Rectangle()
-                .fill(self.style.backgroundColor)
+                .fill(Color(.systemBackground))
                 .cornerRadius(20)
                 .shadow(color: self.style.dropShadowColor, radius: self.dropShadow ? 12 : 0)
             VStack(alignment: .leading){
@@ -53,11 +53,11 @@ public struct PieChartView : View {
                     if(!showValue){
                         Text(self.title)
                             .font(.headline)
-                            .foregroundColor(self.style.textColor)
+                            .foregroundColor(Color(.label))
                     }else{
                         Text("\(self.currentValue, specifier: self.valueSpecifier) % \(labels[data.firstIndex(of: self.currentValue) ?? 0]) ")
                             .font(.headline)
-                            .foregroundColor(self.style.textColor)
+                            .foregroundColor(Color(.label))
                         
                     }
                     Spacer()
@@ -70,7 +70,7 @@ public struct PieChartView : View {
                 if(self.legend != nil) {
                     Text(self.legend!)
                         .font(.headline)
-                        .foregroundColor(self.style.legendTextColor)
+                        .foregroundColor(Color(.secondaryLabel))
                         .padding()
                 }
                 
@@ -82,7 +82,7 @@ public struct PieChartView : View {
 #if DEBUG
 struct PieChartView_Previews : PreviewProvider {
     static var previews: some View {
-        PieChartView(labels: ["oak","honey","ragweed","hickory","mugwort","no pollen"],data:[56,78,53,65,54], title: "Title", legend: "Legend")
+        PieChartView(labels: ["oak","honey","ragweed","hickory","mugwort","no pollen"],data:[56,78,53,65,54, 55], title: "Title", legend: "Legend")
     }
 }
 #endif

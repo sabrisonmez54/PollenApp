@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct PollenCardView: View {
+    
     @State var isLinkActive = false
     @Environment (\.colorScheme) var colorScheme:ColorScheme
     @State private var showDetail = false
@@ -16,6 +17,7 @@ struct PollenCardView: View {
     var pollenName : String = ""
     var pollenCount : Double = 0.0
     var image = ""
+    var location : String
     
     var body: some View {
         
@@ -37,7 +39,7 @@ struct PollenCardView: View {
                         .foregroundColor(Color(.label))
                         .padding(.leading, 10)
                     
-                    NavigationLink(destination: DetailView(date: date, pollenName: pollenName, pollenCount: pollenCount, image: image), isActive: $isLinkActive) {
+                    NavigationLink(destination: DetailView(date: date, pollenName: pollenName, pollenCount: pollenCount, image: image, location: location), isActive: $isLinkActive) {
                         Button(action: {
                             self.isLinkActive = true
                         }) {
@@ -47,7 +49,7 @@ struct PollenCardView: View {
                         }
                     }
                 }
-               
+                
                 VStack(alignment: .leading) {
                     Text("Predominant Pollen:")
                         .font(.system(size: 16, weight: .bold, design: .default))
@@ -55,10 +57,11 @@ struct PollenCardView: View {
                         .padding(.leading, 10)
                         .padding(.top, 5)
                     Text(pollenName)
-                            .font(.system(size: 22, weight: .bold, design: .default))
-                            .foregroundColor(Color(.label))
-                            .padding(.leading, 10)
-                            .padding(.top, 5)
+                        .font(.system(size: 22, weight: .bold, design: .default))
+                        .foregroundColor(Color(.label))
+                        .padding(.leading, 10)
+                        .padding(.top, 5)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 Spacer()
             }
@@ -79,33 +82,39 @@ struct PollenCardView: View {
     }
 }
 struct DetailView: View {
+    
+    let persistanceContainer = PersistenceController.shared
     var date = Date()
     var pollenName : String = ""
     var pollenCount : Double = 0.0
     var image = ""
+    var location : String
     
     var body: some View {
         VStack{
             
-                Image(image)
-                    .resizable()
-                    .scaledToFit()
-                        
-                Text(date, style: .date)
-                Text(pollenName)
-                Text("\(pollenCount, specifier: "%.1f") pcm")
-                
-                HStack{
-                    BarChartView(data: ChartData(values: [("May 10, 2020", 6.0), ("October 21, 2019", 2.0), ("October 20, 2019", 4.0), ("October 19, 2019", 1.0), ("October 18, 2019", 8.0)]), title: "Pollen Count", legend: "particles per cubic meter of air", dropShadow: false )
-                    PieChartView(labels: ["Ragweed","Mugwort"],data: [67,33], title: "Pollen Types", legend: "Percent of Pollen",dropShadow: false)
-                }
-                
-
-
-                
-                Spacer()
+            Image(image)
+                .resizable()
+                .scaledToFit()
             
-          
+            Text(date, style: .date)
+            Text(pollenName)
+            Text("\(pollenCount, specifier: "%.1f") pcm")
+            
+            
+            HomeChartDataView(date: date, pollenName: pollenName, pollenCount: pollenCount, location: location)
+                .environment(\.managedObjectContext, persistanceContainer.container.viewContext)
+            //                HStack{
+            //                    BarChartView(data: ChartData(values: [("May 10, 2020", 6.0), ("October 21, 2019", 2.0), ("October 20, 2019", 4.0), ("October 19, 2019", 1.0), ("October 18, 2019", 8.0)]), title: "Pollen Count", legend: "particles per cubic meter of air", dropShadow: false )
+            //                    PieChartView(labels: ["Ragweed","Mugwort"],data: [67,33], title: "Pollen Types", legend: "Percent of Pollen",dropShadow: false)
+            //                }
+            
+            
+            
+            
+            Spacer()
+            
+            
             
         }
         .navigationTitle("Detail View")

@@ -10,7 +10,6 @@ import CoreData
 
 struct FilterView: View {
     
-    @State var predicate: NSPredicate = NSPredicate(format: "name contains[c] %@", "Hickory")
     @State private var selectedCenterIndex = 0
     @State private var searchText = ""
     var frameworks = ["Date", "Pollen Name", "Pollen Count"]

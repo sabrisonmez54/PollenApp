@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E262DF62608331900265532 /* HomeChartDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E262DF52608331900265532 /* HomeChartDataView.swift */; };
 		1EEA4C212607A6C5008B4F81 /* PollenAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEA4C202607A6C5008B4F81 /* PollenAppApp.swift */; };
 		1EEA4C332607A6C6008B4F81 /* PollenAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEA4C322607A6C6008B4F81 /* PollenAppTests.swift */; };
 		1EEA4C3E2607A6C6008B4F81 /* PollenAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEA4C3D2607A6C6008B4F81 /* PollenAppUITests.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E262DF52608331900265532 /* HomeChartDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChartDataView.swift; sourceTree = "<group>"; };
 		1EEA4C1D2607A6C5008B4F81 /* PollenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PollenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EEA4C202607A6C5008B4F81 /* PollenAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollenAppApp.swift; sourceTree = "<group>"; };
 		1EEA4C2E2607A6C6008B4F81 /* PollenAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PollenAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +263,7 @@
 				1EEA4C6F2607E3D9008B4F81 /* PollenCardView.swift */,
 				1EEA4C6D2607E3D9008B4F81 /* PollenInfoView.swift */,
 				1EEA4C6E2607E3D9008B4F81 /* FilterView.swift */,
+				1E262DF52608331900265532 /* HomeChartDataView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 			files = (
 				1EEA4D2C2607E742008B4F81 /* BarChartCell.swift in Sources */,
 				1EEA4D032607E681008B4F81 /* PieChartView.swift in Sources */,
+				1E262DF62608331900265532 /* HomeChartDataView.swift in Sources */,
 				1EEA4D462607E7EC008B4F81 /* ContentView.swift in Sources */,
 				1EEA4C882607E41B008B4F81 /* SheetsListModel.swift in Sources */,
 				1EEA4C8B2607E41B008B4F81 /* PollenInfo.swift in Sources */,

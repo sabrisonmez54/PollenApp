@@ -31,14 +31,14 @@ public struct LineChartView: View {
         }
     }
     var frame = CGSize(width: 180, height: 120)
-    private var rateValue: Int?
+    public var rateValue: Int?
     
     public init(data: [Double],
                 title: String,
                 legend: String? = nil,
                 style: ChartStyle = Styles.lineChartStyleOne,
                 form: CGSize? = ChartForm.medium,
-                rateValue: Int? = 14,
+                rateValue: Int?,
                 dropShadow: Bool? = true,
                 valueSpecifier: String? = "%.1f") {
         
@@ -108,7 +108,7 @@ public struct LineChartView: View {
                          maxDataValue: .constant(nil)
                     )
                 }
-                .frame(width: frame.width, height: frame.height + 30)
+                .frame(width: frame.width, height: frame.height + 10)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
                 .offset(x: 0, y: 0)
             }.frame(width: self.formSize.width, height: self.formSize.height)
@@ -142,11 +142,11 @@ public struct LineChartView: View {
 struct WidgetView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LineChartView(data: [8,23,54,32,12,37,7,23,43], title: "Line chart", legend: "Basic")
-                .environment(\.colorScheme, .light)
-            
-            LineChartView(data: [282.502, 284.495, 283.51, 285.019, 285.197, 286.118, 288.737, 288.455, 289.391, 287.691, 285.878, 286.46, 286.252, 284.652, 284.129, 284.188], title: "Line chart", legend: "Basic")
-            .environment(\.colorScheme, .light)
+//            LineChartView(data: [8,23,54,32,12,37,7,23,43], title: "Line chart", legend: "Basic")
+//                .environment(\.colorScheme, .light)
+//            
+//            LineChartView(data: [282.502, 284.495, 283.51, 285.019, 285.197, 286.118, 288.737, 288.455, 289.391, 287.691, 285.878, 286.46, 286.252, 284.652, 284.129, 284.188], title: "Line chart", legend: "Basic")
+//            .environment(\.colorScheme, .light)
         }
     }
 }
