@@ -16,18 +16,18 @@ struct PollenCardView: View {
     var date = Date()
     var pollenName : String = ""
     var pollenCount : Double = 0.0
-    var image = ""
+    
     var location : String
     
     var body: some View {
         
         HStack(alignment: .center) {
-            Image(image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 100)
-                .cornerRadius(10)
-                .padding(.all, 20)
+//            Image(image)
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
+//                .frame(width: 100)
+//                .cornerRadius(10)
+//                .padding(.all, 20)
             VStack(alignment: .leading) {
                 Spacer()
                 Text(date, style: .date)
@@ -38,16 +38,6 @@ struct PollenCardView: View {
                     Text("\(pollenCount, specifier: "%.1f") pcm").font(.system(size: 32, weight: .bold, design: .default))
                         .foregroundColor(Color(.label))
                         .padding(.leading, 10)
-                    
-                    NavigationLink(destination: DetailView(date: date, pollenName: pollenName, pollenCount: pollenCount, image: image, location: location), isActive: $isLinkActive) {
-                        Button(action: {
-                            self.isLinkActive = true
-                        }) {
-                            Image(systemName: "chevron.right.circle")
-                                .imageScale(.large)
-                                .padding()
-                        }
-                    }
                 }
                 
                 VStack(alignment: .leading) {
@@ -63,7 +53,30 @@ struct PollenCardView: View {
                         .padding(.top, 5)
                         .fixedSize(horizontal: false, vertical: true)
                 }
-                Spacer()
+            }
+            Spacer()
+            if location == "calder" {
+                NavigationLink(destination: DetailView(date: date, pollenName: pollenName, pollenCount: pollenCount, location: location), isActive: $isLinkActive) {
+                    Button(action: {
+                        self.isLinkActive = true
+                    }) {
+                        Image(systemName: "chevron.right.circle")
+                            .imageScale(.large)
+                            .padding()
+                            .foregroundColor(Colors.OrangeEnd)
+                    }
+                }
+            } else {
+                NavigationLink(destination: DetailView(date: date, pollenName: pollenName, pollenCount: pollenCount, location: location), isActive: $isLinkActive) {
+                    Button(action: {
+                        self.isLinkActive = true
+                    }) {
+                        Image(systemName: "chevron.right.circle")
+                            .imageScale(.large)
+                            .padding()
+                            .foregroundColor(Colors.GradientPurple)
+                    }
+                }
             }
             
         }
@@ -87,38 +100,39 @@ struct DetailView: View {
     var date = Date()
     var pollenName : String = ""
     var pollenCount : Double = 0.0
-    var image = ""
+    
     var location : String
     
     var body: some View {
-        VStack{
+        ScrollView{
+            VStack{
+                
+//                Image(image)
+//                    .resizable()
+//                    .scaledToFit()
+                
+                Text(date, style: .date)
+                Text(pollenName)
+                Text("\(pollenCount, specifier: "%.1f") pcm")
+                
+                Spacer()
+                HomeChartDataView(date: date, pollenName: pollenName, pollenCount: pollenCount, location: location)
+                    .environment(\.managedObjectContext, persistanceContainer.container.viewContext)
+                //                HStack{
+                //                    BarChartView(data: ChartData(values: [("May 10, 2020", 6.0), ("October 21, 2019", 2.0), ("October 20, 2019", 4.0), ("October 19, 2019", 1.0), ("October 18, 2019", 8.0)]), title: "Pollen Count", legend: "particles per cubic meter of air", dropShadow: false )
+                //                    PieChartView(labels: ["Ragweed","Mugwort"],data: [67,33], title: "Pollen Types", legend: "Percent of Pollen",dropShadow: false)
+                //                }
+                
+                
+                
+                
+                Spacer()
+                
+                
+                
+            }
             
-            Image(image)
-                .resizable()
-                .scaledToFit()
-            
-            Text(date, style: .date)
-            Text(pollenName)
-            Text("\(pollenCount, specifier: "%.1f") pcm")
-            
-            
-            HomeChartDataView(date: date, pollenName: pollenName, pollenCount: pollenCount, location: location)
-                .environment(\.managedObjectContext, persistanceContainer.container.viewContext)
-            //                HStack{
-            //                    BarChartView(data: ChartData(values: [("May 10, 2020", 6.0), ("October 21, 2019", 2.0), ("October 20, 2019", 4.0), ("October 19, 2019", 1.0), ("October 18, 2019", 8.0)]), title: "Pollen Count", legend: "particles per cubic meter of air", dropShadow: false )
-            //                    PieChartView(labels: ["Ragweed","Mugwort"],data: [67,33], title: "Pollen Types", legend: "Percent of Pollen",dropShadow: false)
-            //                }
-            
-            
-            
-            
-            Spacer()
-            
-            
-            
-        }
-        .navigationTitle("Detail View")
-        
+        }.navigationTitle("Detail View")
     }
 }
 

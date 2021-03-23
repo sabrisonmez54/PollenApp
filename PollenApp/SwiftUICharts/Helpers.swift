@@ -66,10 +66,10 @@ public struct Styles {
         dropShadowColor: Color.gray)
     
     public static let barChartStyleOrangeLight = ChartStyle(
-        backgroundColor: Color.white,
+        backgroundColor: Color(.systemBackground),
         accentColor: Colors.OrangeStart,
         secondGradientColor: Colors.OrangeEnd,
-        textColor: Color.black,
+        textColor: Color(.label),
         legendTextColor: Color.gray,
         dropShadowColor: Color.gray)
     
@@ -121,6 +121,14 @@ public struct Styles {
         legendTextColor: Color.gray,
         dropShadowColor: Color.gray)
     
+    public static let pieChartStylePurple = ChartStyle(
+        backgroundColor: Color(.systemBackground),
+        accentColor: Colors.OrangeEnd,
+        secondGradientColor: Colors.OrangeStart,
+        textColor: Color.black,
+        legendTextColor: Color.gray,
+        dropShadowColor: Color.gray)
+    
     public static let lineViewDarkMode = ChartStyle(
         backgroundColor: Color.black,
         accentColor: Colors.OrangeStart,
@@ -128,6 +136,14 @@ public struct Styles {
         textColor: Color.white,
         legendTextColor: Color.white,
         dropShadowColor: Color.gray)
+    
+    public static let lineChartDarkModeGray = ChartStyle(
+        backgroundColor: Color(.black),
+        accentColor: Colors.OrangeStart,
+        secondGradientColor: Colors.OrangeEnd,
+        textColor: Color.white,
+        legendTextColor: Color.white,
+        dropShadowColor: Color(.clear))
 }
 
 public struct ChartForm {
@@ -215,7 +231,7 @@ public class ChartData: ObservableObject, Identifiable {
 
 public class MultiLineChartData: ChartData {
     var gradient: GradientColor
-    
+//    @Published var points2:[([Double], GradientColor)]
     public init<N: BinaryFloatingPoint>(points:[N], gradient: GradientColor) {
         self.gradient = gradient
         super.init(points: points)
@@ -228,6 +244,9 @@ public class MultiLineChartData: ChartData {
     
     public func getGradient() -> GradientColor {
         return self.gradient
+    }
+    public override func onlyPoints() -> [Double] {
+        return self.points.map{ $0.1 }
     }
 }
 

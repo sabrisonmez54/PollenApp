@@ -18,7 +18,14 @@ struct HomeChartDataView: View {
     @State var barChartArray = [(String,Double)]()
     @State var pieLabelsArray = [String]()
     @State var pieValuesArray = [Double]()
-    
+    let chartStyle = ChartStyle(backgroundColor: Color(.systemBackground), accentColor: Colors.GradientNeonBlue, secondGradientColor: Colors.GradientPurple, textColor: Color(.label), legendTextColor: Color.gray, dropShadowColor: Color.gray )
+    let chartStyle2 = ChartStyle(
+       backgroundColor: Color(.systemBackground),
+       accentColor: Colors.GradientPurple,
+       secondGradientColor: Colors.GradientNeonBlue,
+       textColor: Color(.label),
+       legendTextColor: Color(.secondaryLabel),
+       dropShadowColor: Color.gray)
     //    @FetchRequest(entity: PollenLincoln.entity(),sortDescriptors: [])
     //    private var pollenLincoln: FetchedResults<PollenLincoln>
     //    @FetchRequest(entity: PollenCalder.entity(), sortDescriptors: [])
@@ -27,7 +34,7 @@ struct HomeChartDataView: View {
     
     var body: some View {
         
-        HStack{
+        HStack {
             if location == "lincoln"{
                 FetchedObjects(
                     predicate:  NSPredicate(format: "date >= %@ AND date <= %@", argumentArray: [Calendar.current.date(byAdding: .day, value: -7, to: date)!, date]),
@@ -35,7 +42,7 @@ struct HomeChartDataView: View {
                         NSSortDescriptor(key: "date", ascending: false)
                     ])
                 { (pollenLincoln: [PollenLincoln]) in
-                    BarChartView(data: ChartData(values: barChartArray), title: "Pollen Count", legend: "particles per cubic meter of air", dropShadow: false ).onAppear(perform: {
+                    BarChartView(data: ChartData(values: barChartArray), title: "Pollen Count", legend: "particles per cubic meter of air", style: chartStyle, dropShadow: false ).onAppear(perform: {
                         for i in pollenLincoln {
                             let format = i.date!.getFormattedDate(format: "MM/dd/yyyy")
                             barChartArray.append((format, i.count))
@@ -74,7 +81,7 @@ struct HomeChartDataView: View {
                         }
                     })
                     
-                    PieChartView(labels: pieLabelsArray, data: pieValuesArray, title: "Pollen Types", legend: "Percent of Pollen",dropShadow: false)
+                    PieChartView(labels: pieLabelsArray, data: pieValuesArray, title: "Pollen Types", legend: "Percent of Pollen",style: chartStyle2,dropShadow: false)
                 }
             }
             
@@ -85,7 +92,7 @@ struct HomeChartDataView: View {
                         NSSortDescriptor(key: "date", ascending: false)
                     ])
                 { (pollenCalder: [PollenCalder]) in
-                    BarChartView(data: ChartData(values: barChartArray), title: "Pollen Count", legend: "particles per cubic meter of air", dropShadow: false ).onAppear(perform: {
+                    BarChartView(data: ChartData(values: barChartArray), title: "Pollen Count", legend: "particles per cubic meter of air", dropShadow: false).onAppear(perform: {
                         for i in pollenCalder {
                             let format = i.date!.getFormattedDate(format: "MM/dd/yyyy")
                             barChartArray.append((format, i.count))
@@ -130,40 +137,18 @@ struct HomeChartDataView: View {
                     //                    let rateInt = Int(rateDouble)
                     //                    LineChartView(data: pieValuesArray, title: "Title", legend: "Legendary", rateValue: 50)
                     PieChartView(labels: pieLabelsArray, data: pieValuesArray, title: "Pollen Types", legend: "Percent of Pollen",dropShadow: false)
-                    //                    PieChartView(labels: pieLabelsArray, data: pieValuesArray, title: "Pollen Types", legend: "Percent of Pollen",dropShadow: false).onAppear(perform: {
-                    //
-                    //                        //                        for i in pollenCalder {
-                    ////                            let dataVar = 0.0
-                    ////                            if i.name! == "No Pollen" {
-                    ////                                pieLabelsArray.append(i.name!)
-                    ////                                pieValuesArray.append(dataVar)
-                    ////                            } else if i.name!.contains("Unidentified") {
-                    ////                                let delimetered = i.name!.components(separatedBy: ",")
-                    ////                                print(delimetered)
-                    ////                            }
-                    ////                            else if i.name!.contains(",") {
-                    ////                                let delimetered = i.name!.components(separatedBy: ",")
-                    ////                                print(delimetered)
-                    ////                            }
-                    ////                            else {
-                    ////                                let delimetered = i.name!.components(separatedBy: " ")
-                    ////                                print(delimetered)
-                    ////                            }
-                    ////
-                    ////
-                    ////                            pieValuesArray.append(i.count)
-                    ////                        }
-                    //                    })
+                    
                 }
             }
-            
         }
+       
     }
 }
 
 struct HomeChartDataView_Previews: PreviewProvider {
     static var previews: some View {
         let date = Date()
+        
         HomeChartDataView (date: date, pollenName: "Oak 100%", pollenCount:  6.0, location: "lincoln")
     }
 }

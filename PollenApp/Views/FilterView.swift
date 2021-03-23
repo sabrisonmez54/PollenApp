@@ -33,7 +33,7 @@ struct FilterView: View {
             if selectedCenterIndex == 0 {
                 Form {
                     Section {
-                        Picker(selection: $selectedFrameworkIndex, label: Text("Search by")) {
+                        Picker(selection: $selectedFrameworkIndex, label: Text("Search")) {
                             ForEach(0 ..< frameworks.count) {
                                 Text(self.frameworks[$0])
                             }

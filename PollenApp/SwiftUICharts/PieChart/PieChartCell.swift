@@ -34,6 +34,7 @@ public struct PieChartCell : View {
     var index: Int
     var backgroundColor:Color
     var accentColor:Color
+    var gradient: GradientColor?
     public var body: some View {
         path
             .fill()

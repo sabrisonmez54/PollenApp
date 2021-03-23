@@ -38,7 +38,7 @@ public struct BarChartView : View {
         self.title = title
         self.legend = legend
         self.style = style
-        self.darkModeStyle = style.darkModeStyle != nil ? style.darkModeStyle! : Styles.barChartStyleOrangeDark
+        self.darkModeStyle = style.darkModeStyle != nil ? style.darkModeStyle! : style
         self.formSize = form!
         self.dropShadow = dropShadow!
         self.cornerImage = cornerImage!
