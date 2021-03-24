@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 
 struct PollenCardView: View {
@@ -19,15 +20,16 @@ struct PollenCardView: View {
     
     var location : String
     
+    
     var body: some View {
         
         HStack(alignment: .center) {
-//            Image(image)
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-//                .frame(width: 100)
-//                .cornerRadius(10)
-//                .padding(.all, 20)
+            //            Image(image)
+            //                .resizable()
+            //                .aspectRatio(contentMode: .fit)
+            //                .frame(width: 100)
+            //                .cornerRadius(10)
+            //                .padding(.all, 20)
             VStack(alignment: .leading) {
                 Spacer()
                 Text(date, style: .date)
@@ -104,28 +106,37 @@ struct DetailView: View {
     var pollenCount : Double = 0.0
     
     var location : String
+    var tabBarController: UITabBarController?
+    @State var uiTabarController: UITabBarController?
     
     var body: some View {
         ScrollView{
             VStack(alignment: .center){
                 
-//                Image(image)
-//                    .resizable()
-//                    .scaledToFit()
+                //                Image(image)
+                //                    .resizable()
+                //                    .scaledToFit()
                 HomeChartDataView(date: date, pollenName: pollenName, pollenCount: pollenCount, location: location)
                     .environment(\.managedObjectContext, persistanceContainer.container.viewContext)
                 
                 
-               
-             
+                
+                
             }
-           
+            
             //                HStack{
             //                    BarChartView(data: ChartData(values: [("May 10, 2020", 6.0), ("October 21, 2019", 2.0), ("October 20, 2019", 4.0), ("October 19, 2019", 1.0), ("October 18, 2019", 8.0)]), title: "Pollen Count", legend: "particles per cubic meter of air", dropShadow: false )
             //                    PieChartView(labels: ["Ragweed","Mugwort"],data: [67,33], title: "Pollen Types", legend: "Percent of Pollen",dropShadow: false)
             //                }
             
         }.navigationTitle("\(date, style: .date)")
+        .introspectTabBarController { (UITabBarController) in
+                    UITabBarController.tabBar.isHidden = true
+                    uiTabarController = UITabBarController
+                }.onDisappear{
+                    uiTabarController?.tabBar.isHidden = false
+                }
+        
     }
 }
 
