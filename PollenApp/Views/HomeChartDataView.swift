@@ -92,10 +92,11 @@ struct HomeChartDataView: View {
                             var counts: [String: Int] = [:]
                             
                             pollenNamesArray.forEach { counts[$0, default: 0] += 1 }
-                            
+                            var lineChartSorted = [(String,Double)]()
                             for item in counts {
-                                lineChartArray.append((item.key, Double(item.value)))
+                                lineChartSorted.append((item.key, Double(item.value)))
                             }
+                            lineChartArray = lineChartSorted.sorted(by: { $0.0 < $1.0})
                             
                             let dataVar = 0.0
                             if pollenName == "No Pollen" {
@@ -184,10 +185,12 @@ struct HomeChartDataView: View {
                             var counts: [String: Int] = [:]
                             
                             pollenNamesArray.forEach { counts[$0, default: 0] += 1 }
-                            
+                            var lineChartSorted = [(String,Double)]()
                             for item in counts {
-                                lineChartArray.append((item.key, Double(item.value)))
+                                lineChartSorted.append((item.key, Double(item.value)))
                             }
+                            lineChartArray = lineChartSorted.sorted(by: { $0.0 < $1.0})
+                            
                             
                             let dataVar = 0.0
                             if pollenName == "No Pollen" {
