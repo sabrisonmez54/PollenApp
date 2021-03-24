@@ -33,7 +33,7 @@ struct FilterView: View {
             if selectedCenterIndex == 0 {
                 Form {
                     Section {
-                        Picker(selection: $selectedFrameworkIndex, label: Text("Search")) {
+                        Picker(selection: $selectedFrameworkIndex, label: Text("Search by")) {
                             ForEach(0 ..< frameworks.count) {
                                 Text(self.frameworks[$0])
                             }
@@ -219,7 +219,7 @@ struct FilterView: View {
                         }                        }
                 }
             }
-        }.navigationTitle("Search Data")
+        }.navigationTitle("Search")
     }
     
     func predicateForDayUsingDate(_ date: Date) -> NSPredicate {

@@ -15,6 +15,7 @@ class NetworkManager: ObservableObject {
     @Published var sheetsData = DataArrayModel(titleLincoln: "LINCOLN CENTER (Department of NATURAL SCIENCES)  NYC, NY", pollenDatesLincoln: [], pollenNamesLincoln: [], pollenCountLincoln: [], titleCalder: "LOUIS CALDER CENTER (Biological Station)  Armonk, NY", pollenDatesCalder: [],pollenNamesCalder: [], pollenCountCalder: [])
     @Published var datesArray = [String]()
     @Published var loading = false
+    @Published var lincolnDouble = [Double]()
     
     private let range = "A20:B23"
     private let api_url_base = "https://spreadsheets.google.com/feeds/list/1JgdxwstIJVet8rVMbegqCS72kFtFLt8jr8v_y-3gVos/1/public/full?alt=json"
@@ -117,3 +118,29 @@ class NetworkManager: ObservableObject {
     }
    
 }
+//extension NetworkManager {
+//    
+//    func getYearArrayDouble(_ array: [String]) -> [Double] {
+//        for index in 0...self.sheetsData.pollenCountLincoln.count - 1 {
+//            if(self.sheetsData.pollenDatesLincoln[index] != "-" && self.sheetsData.pollenNamesLincoln[index] != "-") {
+//                
+//                let pollenCountString = self.sheetsData.pollenCountLincoln[index]
+//                var pollenCountDouble = 0.0
+//                if pollenCountString.contains("pcm") {
+//                    let replaced = pollenCountString.replacingOccurrences(of: "pcm", with: "")
+//                    var trimmed = replaced
+//                    if !replaced.contains("."){
+//                        trimmed = replaced.trimmingCharacters(in: .whitespacesAndNewlines)
+//                        trimmed.append(".0")
+//                    }
+//                    
+//                    pollenCountDouble += Double(trimmed) ?? 0.0
+//                    
+//                }
+//                
+//                lincolnDouble.append(pollenCountDouble)
+//            }
+//        }
+//    }
+//    
+//}

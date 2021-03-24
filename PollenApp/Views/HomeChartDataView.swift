@@ -16,16 +16,26 @@ struct HomeChartDataView: View {
     var location : String
     @State var dateArray = [String]()
     @State var barChartArray = [(String,Double)]()
+    @State var lineChartArray = [(String,Double)]()
     @State var pieLabelsArray = [String]()
+    @State var pollenNamesArray = [String]()
     @State var pieValuesArray = [Double]()
-    let chartStyle = ChartStyle(backgroundColor: Color(.systemBackground), accentColor: Colors.GradientNeonBlue, secondGradientColor: Colors.GradientPurple, textColor: Color(.label), legendTextColor: Color.gray, dropShadowColor: Color.gray )
+    let chartStyle = ChartStyle(backgroundColor: Color(.systemBackground), accentColor: Color(hexString: "C501B0"), secondGradientColor: Color(hexString: "741DF4"), textColor: Color(.label), legendTextColor: Color.gray, dropShadowColor: Color.gray )
     let chartStyle2 = ChartStyle(
-       backgroundColor: Color(.systemBackground),
-       accentColor: Colors.GradientPurple,
-       secondGradientColor: Colors.GradientNeonBlue,
-       textColor: Color(.label),
-       legendTextColor: Color(.secondaryLabel),
-       dropShadowColor: Color.gray)
+        
+        backgroundColor: Color(.systemBackground),
+        accentColor: Color(hexString: "741DF4"),
+        secondGradientColor: Color(hexString: "C501B0"),
+        textColor: Color(.label),
+        legendTextColor: Color(.secondaryLabel),
+        dropShadowColor: Color.gray)
+    let lineStyle = ChartStyle(
+        backgroundColor: Color(.systemBackground),
+        accentColor: Color(hexString: "741DF4"),
+        secondGradientColor: Color(hexString: "C501B0"),
+        textColor: Color(.label),
+        legendTextColor: Color(.secondaryLabel),
+        dropShadowColor: Color.gray)
     //    @FetchRequest(entity: PollenLincoln.entity(),sortDescriptors: [])
     //    private var pollenLincoln: FetchedResults<PollenLincoln>
     //    @FetchRequest(entity: PollenCalder.entity(), sortDescriptors: [])
@@ -34,7 +44,7 @@ struct HomeChartDataView: View {
     
     var body: some View {
         
-        HStack {
+        VStack(alignment: .leading) {
             if location == "lincoln"{
                 FetchedObjects(
                     predicate:  NSPredicate(format: "date >= %@ AND date <= %@", argumentArray: [Calendar.current.date(byAdding: .day, value: -7, to: date)!, date]),
@@ -42,46 +52,90 @@ struct HomeChartDataView: View {
                         NSSortDescriptor(key: "date", ascending: false)
                     ])
                 { (pollenLincoln: [PollenLincoln]) in
-                    BarChartView(data: ChartData(values: barChartArray), title: "Pollen Count", legend: "particles per cubic meter of air", style: chartStyle, dropShadow: false ).onAppear(perform: {
-                        for i in pollenLincoln {
-                            let format = i.date!.getFormattedDate(format: "MM/dd/yyyy")
-                            barChartArray.append((format, i.count))
-                        }
-                        let dataVar = 0.0
-                        if pollenName == "No Pollen" {
-                            pieLabelsArray.append(pollenName)
-                            pieValuesArray.append(dataVar)
-                        }
-                        else if pollenName.contains(",") {
-                            let delimetered = pollenName.components(separatedBy: ",")
-                            for item in delimetered {
-                                let pollenArray = item.components(separatedBy: CharacterSet.decimalDigits)
+                    Text("Pollen Make Up of Today").font(.headline).padding()
+                    Spacer()
+                    PieChartView(labels: pieLabelsArray, data: pieValuesArray, title: "Pollen Types", legend: "Percent of Pollen",style: chartStyle2, form: ChartForm.extraLarge, dropShadow: true).padding()
+                    Text("Pollen Data Within the Past 7 Days").font(.headline).padding()
+                    Spacer()
+                    HStack {
+                        BarChartView(data: ChartData(values: barChartArray), title: "Pollen Count", legend: "particles per cubic meter of air", style: chartStyle, dropShadow: true ).onAppear(perform: {
+                            for i in pollenLincoln {
+                                let format = i.date!.getFormattedDate(format: "MM/dd/yyyy")
+                                barChartArray.append((format, i.count))
                                 
-                                let label = pollenArray[0].trimmingCharacters(in: .whitespacesAndNewlines)
-                                print(label)
-                                pieLabelsArray.append(String(label))
                                 
-                                let stringArray = item.components(separatedBy: CharacterSet.decimalDigits.inverted)
-                                for item in stringArray {
+                                if i.name! == "No Pollen" {
+                                    pollenNamesArray.append(i.name!.trimmingCharacters(in: .whitespacesAndNewlines))
                                     
-                                    if let number = Double(item) {
-                                        pieValuesArray.append(number)
+                                }
+                                else if i.name!.contains(",") {
+                                    let delimeteredNames = i.name!.components(separatedBy: ",")
+                                    for item in delimeteredNames {
+                                        let pollenArray = item.components(separatedBy: CharacterSet.decimalDigits)
+                                        pollenNamesArray.append(pollenArray[0].trimmingCharacters(in: .whitespacesAndNewlines))
+                                        
+                                        
                                         
                                     }
+                                    
                                 }
+                                else if !i.name!.contains(","){
+                                    let delimeteredNames = i.name!.components(separatedBy: " ")
+                                    pollenNamesArray.append(delimeteredNames[0].trimmingCharacters(in: .whitespacesAndNewlines))
+                                    //                               print(delimetered)
+                                    //                               pollenNameS
+                                    //                                print(delimetered)
+                                }
+                                
                             }
                             
-                        }
-                        else {
-                            let delimetered = pollenName.components(separatedBy: " ")
-                            let percentVar = delimetered[1].components(separatedBy: "%")
-                            pieValuesArray.append(Double(percentVar[0])!)
-                            pieLabelsArray.append(delimetered[0])
-                            //                                print(delimetered)
-                        }
-                    })
+                            var counts: [String: Int] = [:]
+                            
+                            pollenNamesArray.forEach { counts[$0, default: 0] += 1 }
+                            
+                            for item in counts {
+                                lineChartArray.append((item.key, Double(item.value)))
+                            }
+                            
+                            let dataVar = 0.0
+                            if pollenName == "No Pollen" {
+                                pieLabelsArray.append(pollenName)
+                                pieValuesArray.append(dataVar)
+                            }
+                            else if pollenName.contains(",") {
+                                let delimetered = pollenName.components(separatedBy: ",")
+                                for item in delimetered {
+                                    let pollenArray = item.components(separatedBy: CharacterSet.decimalDigits)
+                                    
+                                    let label = pollenArray[0].trimmingCharacters(in: .whitespacesAndNewlines)
+                                    
+                                    pieLabelsArray.append(String(label))
+                                    
+                                    let stringArray = item.components(separatedBy: CharacterSet.decimalDigits.inverted)
+                                    for item in stringArray {
+                                        
+                                        if let number = Double(item) {
+                                            pieValuesArray.append(number)
+                                            
+                                        }
+                                    }
+                                }
+                                
+                            }
+                            else {
+                                let delimetered = pollenName.components(separatedBy: " ")
+                                let percentVar = delimetered[1].components(separatedBy: "%")
+                                pieValuesArray.append(Double(percentVar[0])!)
+                                pieLabelsArray.append(delimetered[0])
+                                //                                print(delimetered)
+                            }
+                            
+                        })
+                        LineChartView(data:  ChartData(values: lineChartArray), title: "Most Frequent", legend: "Pollen Types", style: lineStyle, rateValue:0) // legend is optional
+                    }.padding()
                     
-                    PieChartView(labels: pieLabelsArray, data: pieValuesArray, title: "Pollen Types", legend: "Percent of Pollen",style: chartStyle2,dropShadow: false)
+                    
+                    
                 }
             }
             
@@ -92,56 +146,88 @@ struct HomeChartDataView: View {
                         NSSortDescriptor(key: "date", ascending: false)
                     ])
                 { (pollenCalder: [PollenCalder]) in
-                    BarChartView(data: ChartData(values: barChartArray), title: "Pollen Count", legend: "particles per cubic meter of air", dropShadow: false).onAppear(perform: {
-                        for i in pollenCalder {
-                            let format = i.date!.getFormattedDate(format: "MM/dd/yyyy")
-                            barChartArray.append((format, i.count))
-                            //                            pieValuesArray.append(i.count)
-                            //                            pieLabelsArray.append(format)
+                    Text("Pollen Make Up of Today:").font(.headline).padding()
+                    PieChartView(labels: pieLabelsArray, data: pieValuesArray, title: "Pollen Types", legend: "Percent of Pollen" , form: ChartForm.extraLarge, dropShadow: true).padding()
+                    Text("Pollen Count Within the Last Week:").font(.headline).padding()
+                    
+                    HStack{
+                        BarChartView(data: ChartData(values: barChartArray), title: "Pollen Count", legend: "particles per cubic meter of air", dropShadow: true).onAppear(perform: {
                             
-                        }
-                        let dataVar = 0.0
-                        if pollenName == "No Pollen" {
-                            pieLabelsArray.append(pollenName)
-                            pieValuesArray.append(dataVar)
-                        }
-                        else if pollenName.contains(",") {
-                            let delimetered = pollenName.components(separatedBy: ",")
-                            for item in delimetered {
-                                let pollenArray = item.components(separatedBy: CharacterSet.decimalDigits)
-                                let label = pollenArray[0].trimmingCharacters(in: .whitespacesAndNewlines)
-                                print(label)
-                                pieLabelsArray.append(String(label))
+                            for i in pollenCalder {
+                                let format = i.date!.getFormattedDate(format: "MM/dd/yyyy")
+                                barChartArray.append((format, i.count))
                                 
-                                let stringArray = item.components(separatedBy: CharacterSet.decimalDigits.inverted)
-                                for item in stringArray {
-                                    pieLabelsArray.append(item)
-                                    if let number = Double(item) {
-                                        pieValuesArray.append(number)
-                                        print(number)
+                                if i.name! == "No Pollen" {
+                                    pollenNamesArray.append(i.name!.trimmingCharacters(in: .whitespacesAndNewlines))
+                                    
+                                }
+                                
+                                else if i.name!.contains(",") {
+                                    let delimeteredNames = i.name!.components(separatedBy: ",")
+                                    for item in delimeteredNames {
+                                        let pollenArray = item.components(separatedBy: CharacterSet.decimalDigits)
+                                        pollenNamesArray.append(pollenArray[0].trimmingCharacters(in: .whitespacesAndNewlines))
+                                        
+                                        
+                                        
                                     }
+                                    
+                                }
+                                else if !i.name!.contains(","){
+                                    let delimeteredNames = i.name!.components(separatedBy: " ")
+                                    pollenNamesArray.append(delimeteredNames[0].trimmingCharacters(in: .whitespacesAndNewlines))
+                                    //                               print(delimetered)
+                                    //                               pollenNameS
+                                    //                                print(delimetered)
                                 }
                             }
-                            print(delimetered)
-                        }
-                        else {
-                            let delimetered = pollenName.components(separatedBy: " ")
-                            let percentVar = delimetered[1].components(separatedBy: "%")
-                            pieValuesArray.append(Double(percentVar[0])!)
-                            pieLabelsArray.append(delimetered[0])
-                            //                                print(delimetered)
-                        }
-                        
-                    })
-                    //                    let rateDouble = pieValuesArray[0] - pieValuesArray[1]
-                    //                    let rateInt = Int(rateDouble)
-                    //                    LineChartView(data: pieValuesArray, title: "Title", legend: "Legendary", rateValue: 50)
-                    PieChartView(labels: pieLabelsArray, data: pieValuesArray, title: "Pollen Types", legend: "Percent of Pollen",dropShadow: false)
-                    
+                            var counts: [String: Int] = [:]
+                            
+                            pollenNamesArray.forEach { counts[$0, default: 0] += 1 }
+                            
+                            for item in counts {
+                                lineChartArray.append((item.key, Double(item.value)))
+                            }
+                            
+                            let dataVar = 0.0
+                            if pollenName == "No Pollen" {
+                                pieLabelsArray.append(pollenName)
+                                pieValuesArray.append(dataVar)
+                            }
+                            else if pollenName.contains(",") {
+                                let delimetered = pollenName.components(separatedBy: ",")
+                                for item in delimetered {
+                                    let pollenArray = item.components(separatedBy: CharacterSet.decimalDigits)
+                                    let label = pollenArray[0].trimmingCharacters(in: .whitespacesAndNewlines)
+                                    
+                                    pieLabelsArray.append(String(label))
+                                    
+                                    let stringArray = item.components(separatedBy: CharacterSet.decimalDigits.inverted)
+                                    for item in stringArray {
+                                        pieLabelsArray.append(item)
+                                        if let number = Double(item) {
+                                            pieValuesArray.append(number)
+                                            print(number)
+                                        }
+                                    }
+                                }
+                                print(delimetered)
+                            }
+                            else {
+                                let delimetered = pollenName.components(separatedBy: " ")
+                                let percentVar = delimetered[1].components(separatedBy: "%")
+                                pieValuesArray.append(Double(percentVar[0])!)
+                                pieLabelsArray.append(delimetered[0])
+                                //                                print(delimetered)
+                            }
+                            
+                        })
+                        LineChartView(data:  ChartData(values: lineChartArray), title: "Pollen Type", legend: "Frequency", rateValue:0)
+                    }.padding()
                 }
             }
         }
-       
+        
     }
 }
 

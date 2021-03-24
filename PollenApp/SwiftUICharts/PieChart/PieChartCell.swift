@@ -37,8 +37,8 @@ public struct PieChartCell : View {
     var gradient: GradientColor?
     public var body: some View {
         path
-            .fill()
-            .foregroundColor(self.accentColor)
+            .fill(LinearGradient(gradient: gradient?.getGradient() ?? Gradient(colors: [Colors.OrangeStart, Colors.OrangeEnd]), startPoint: .top, endPoint: .bottom))
+//            .foregroundColor(self.accentColor)
             .overlay(path.stroke(Color(.systemBackground), lineWidth: 2))
             .scaleEffect(self.show ? 1 : 0)
             .animation(Animation.spring().delay(Double(self.index) * 0.04))

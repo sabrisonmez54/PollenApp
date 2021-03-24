@@ -45,6 +45,7 @@ public struct GradientColor {
 }
 
 public struct GradientColors {
+    
     public static let orange = GradientColor(start: Colors.OrangeStart, end: Colors.OrangeEnd)
     public static let blue = GradientColor(start: Colors.GradientPurple, end: Colors.GradientNeonBlue)
     public static let green = GradientColor(start: Color(hexString: "0BCDF7"), end: Color(hexString: "A2FEAE"))
@@ -58,10 +59,10 @@ public struct GradientColors {
 
 public struct Styles {
     public static let lineChartStyleOne = ChartStyle(
-        backgroundColor: Color.white,
+        backgroundColor: Color(.systemBackground),
         accentColor: Colors.OrangeStart,
         secondGradientColor: Colors.OrangeEnd,
-        textColor: Color.black,
+        textColor: Color(.label),
         legendTextColor: Color.gray,
         dropShadowColor: Color.gray)
     
@@ -165,6 +166,7 @@ public struct ChartForm {
 public class ChartStyle {
     public var backgroundColor: Color
     public var accentColor: Color
+    public var secondGradientColor : Color
     public var gradientColor: GradientColor
     public var textColor: Color
     public var legendTextColor: Color
@@ -178,16 +180,18 @@ public class ChartStyle {
         self.textColor = textColor
         self.legendTextColor = legendTextColor
         self.dropShadowColor = dropShadowColor
+        self.secondGradientColor = secondGradientColor
     }
     
-    public init(backgroundColor: Color, accentColor: Color, gradientColor: GradientColor, textColor: Color, legendTextColor: Color, dropShadowColor: Color){
-        self.backgroundColor = backgroundColor
-        self.accentColor = accentColor
-        self.gradientColor = gradientColor
-        self.textColor = textColor
-        self.legendTextColor = legendTextColor
-        self.dropShadowColor = dropShadowColor
-    }
+//    public init(backgroundColor: Color, accentColor: Color, gradientColor: GradientColor, textColor: Color, legendTextColor: Color, dropShadowColor: Color){
+//        self.backgroundColor = backgroundColor
+//        self.accentColor = accentColor
+//        self.gradientColor = gradientColor
+//        self.textColor = textColor
+//        self.legendTextColor = legendTextColor
+//        self.dropShadowColor = dropShadowColor
+//
+//    }
     
     public init(formSize: CGSize){
         self.backgroundColor = Color.white
@@ -196,6 +200,7 @@ public class ChartStyle {
         self.legendTextColor = Color.gray
         self.textColor = Color.black
         self.dropShadowColor = Color.gray
+        self.secondGradientColor = Colors.OrangeEnd
     }
 }
 
@@ -226,6 +231,9 @@ public class ChartData: ObservableObject, Identifiable {
     
     public func onlyPoints() -> [Double] {
         return self.points.map{ $0.1 }
+    }
+    public func onlyLabels() -> [String] {
+        return self.points.map{ $0.0 }
     }
 }
 

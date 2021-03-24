@@ -51,7 +51,9 @@ struct PollenCardView: View {
                         .foregroundColor(Color(.label))
                         .padding(.leading, 10)
                         .padding(.top, 5)
+                        .padding(.bottom, 5)
                         .fixedSize(horizontal: false, vertical: true)
+                    
                 }
             }
             Spacer()
@@ -74,7 +76,7 @@ struct PollenCardView: View {
                         Image(systemName: "chevron.right.circle")
                             .imageScale(.large)
                             .padding()
-                            .foregroundColor(Colors.GradientPurple)
+                            .foregroundColor(Color(hexString: "741DF4"))
                     }
                 }
             }
@@ -105,34 +107,25 @@ struct DetailView: View {
     
     var body: some View {
         ScrollView{
-            VStack{
+            VStack(alignment: .center){
                 
 //                Image(image)
 //                    .resizable()
 //                    .scaledToFit()
-                
-                Text(date, style: .date)
-                Text(pollenName)
-                Text("\(pollenCount, specifier: "%.1f") pcm")
-                
-                Spacer()
                 HomeChartDataView(date: date, pollenName: pollenName, pollenCount: pollenCount, location: location)
                     .environment(\.managedObjectContext, persistanceContainer.container.viewContext)
-                //                HStack{
-                //                    BarChartView(data: ChartData(values: [("May 10, 2020", 6.0), ("October 21, 2019", 2.0), ("October 20, 2019", 4.0), ("October 19, 2019", 1.0), ("October 18, 2019", 8.0)]), title: "Pollen Count", legend: "particles per cubic meter of air", dropShadow: false )
-                //                    PieChartView(labels: ["Ragweed","Mugwort"],data: [67,33], title: "Pollen Types", legend: "Percent of Pollen",dropShadow: false)
-                //                }
                 
                 
-                
-                
-                Spacer()
-                
-                
-                
+               
+             
             }
+           
+            //                HStack{
+            //                    BarChartView(data: ChartData(values: [("May 10, 2020", 6.0), ("October 21, 2019", 2.0), ("October 20, 2019", 4.0), ("October 19, 2019", 1.0), ("October 18, 2019", 8.0)]), title: "Pollen Count", legend: "particles per cubic meter of air", dropShadow: false )
+            //                    PieChartView(labels: ["Ragweed","Mugwort"],data: [67,33], title: "Pollen Types", legend: "Percent of Pollen",dropShadow: false)
+            //                }
             
-        }.navigationTitle("Detail View")
+        }.navigationTitle("\(date, style: .date)")
     }
 }
 

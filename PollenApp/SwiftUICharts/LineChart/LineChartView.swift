@@ -15,13 +15,14 @@ public struct LineChartView: View {
     public var legend: String?
     public var style: ChartStyle
     public var darkModeStyle: ChartStyle
-    
+//    public var labels: [String]?
     public var formSize:CGSize
     public var dropShadow: Bool
     public var valueSpecifier:String
     
     @State private var touchLocation:CGPoint = .zero
     @State private var showIndicatorDot: Bool = false
+    @State private var currentLabel: String = ""
     @State private var currentValue: Double = 2 {
         didSet{
             if (oldValue != self.currentValue && showIndicatorDot) {
@@ -33,7 +34,7 @@ public struct LineChartView: View {
     var frame = CGSize(width: 180, height: 120)
     public var rateValue: Int?
     
-    public init(data: [Double],
+    public init(data: ChartData,
                 title: String,
                 legend: String? = nil,
                 style: ChartStyle = Styles.lineChartStyleOne,
@@ -42,16 +43,17 @@ public struct LineChartView: View {
                 dropShadow: Bool? = true,
                 valueSpecifier: String? = "%.1f") {
         
-        self.data = ChartData(points: data)
+        self.data = data
         self.title = title
         self.legend = legend
         self.style = style
-        self.darkModeStyle = style.darkModeStyle != nil ? style.darkModeStyle! : Styles.lineChartDarkModeGray
+        self.darkModeStyle = style.darkModeStyle != nil ? style.darkModeStyle! : style
         self.formSize = form!
         frame = CGSize(width: self.formSize.width, height: self.formSize.height/2)
         self.dropShadow = dropShadow!
         self.valueSpecifier = valueSpecifier!
         self.rateValue = rateValue
+//        self.labels = labels
     }
     
     public var body: some View {
@@ -64,7 +66,7 @@ public struct LineChartView: View {
                 if(!self.showIndicatorDot){
                     VStack(alignment: .leading, spacing: 8){
                         Text(self.title)
-                            .font(.title)
+                            .font(.headline)
                             .bold()
                             .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.textColor : self.style.textColor)
                         if (self.legend != nil){
@@ -91,8 +93,11 @@ public struct LineChartView: View {
                 }else{
                     HStack{
                         Spacer()
-                        Text("\(self.currentValue, specifier: self.valueSpecifier)")
-                            .font(.system(size: 41, weight: .bold, design: .default))
+                        Text("\(self.currentValue, specifier: "%.0f") " )
+                            .font(.system(size: 20, weight: .bold, design: .default))
+                            .offset(x: 0, y: 30)
+                        Text("\(self.currentLabel) " )
+                            .font(.system(size: 16, weight: .bold, design: .default))
                             .offset(x: 0, y: 30)
                         Spacer()
                     }
@@ -105,7 +110,9 @@ public struct LineChartView: View {
                          touchLocation: self.$touchLocation,
                          showIndicator: self.$showIndicatorDot,
                          minDataValue: .constant(nil),
-                         maxDataValue: .constant(nil)
+                         maxDataValue: .constant(nil),
+                         gradient: GradientColor(start: style.accentColor, end: style.secondGradientColor)
+                         
                     )
                 }
                 .frame(width: frame.width, height: frame.height + 10)
@@ -127,17 +134,21 @@ public struct LineChartView: View {
     
     @discardableResult func getClosestDataPoint(toPoint: CGPoint, width:CGFloat, height: CGFloat) -> CGPoint {
         let points = self.data.onlyPoints()
+        let labels = self.data.onlyLabels()
         let stepWidth: CGFloat = width / CGFloat(points.count-1)
         let stepHeight: CGFloat = height / CGFloat(points.max()! + points.min()!)
         
         let index:Int = Int(round((toPoint.x)/stepWidth))
         if (index >= 0 && index < points.count){
             self.currentValue = points[index]
+            self.currentLabel = labels[index]
             return CGPoint(x: CGFloat(index)*stepWidth, y: CGFloat(points[index])*stepHeight)
         }
         return .zero
     }
+  
 }
+
 
 struct WidgetView_Previews: PreviewProvider {
     static var previews: some View {
