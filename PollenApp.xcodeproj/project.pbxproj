@@ -11,14 +11,6 @@
 		1EE97DCF260A39430074AE99 /* MultiLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE97DCE260A39430074AE99 /* MultiLine.swift */; };
 		1EE97DE5260B87E80074AE99 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 1EE97DE4260B87E80074AE99 /* Introspect */; };
 		1EE97DEA260BCD760074AE99 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE97DE9260BCD760074AE99 /* PullToRefreshView.swift */; };
-		1EE97DF8260BDB5D0074AE99 /* BBRefreshableScrollView in Resources */ = {isa = PBXBuildFile; fileRef = 1EE97DF7260BDB5D0074AE99 /* BBRefreshableScrollView */; };
-		1EE97E03260BDB8B0074AE99 /* BBActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE97DFE260BDB8B0074AE99 /* BBActivityIndicatorView.swift */; };
-		1EE97E04260BDB8B0074AE99 /* BBPositionPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE97E00260BDB8B0074AE99 /* BBPositionPreferenceKey.swift */; };
-		1EE97E05260BDB8B0074AE99 /* BBPositionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE97DFF260BDB8B0074AE99 /* BBPositionType.swift */; };
-		1EE97E06260BDB8B0074AE99 /* BBRefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE97E02260BDB8B0074AE99 /* BBRefreshableScrollView.swift */; };
-		1EE97E07260BDB8B0074AE99 /* BBRefreshState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE97DFC260BDB8B0074AE99 /* BBRefreshState.swift */; };
-		1EE97E08260BDB8B0074AE99 /* BBPositionIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE97DFD260BDB8B0074AE99 /* BBPositionIndicatorView.swift */; };
-		1EE97E09260BDB8B0074AE99 /* BBPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE97E01260BDB8B0074AE99 /* BBPosition.swift */; };
 		1EEA4C212607A6C5008B4F81 /* PollenAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEA4C202607A6C5008B4F81 /* PollenAppApp.swift */; };
 		1EEA4C332607A6C6008B4F81 /* PollenAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEA4C322607A6C6008B4F81 /* PollenAppTests.swift */; };
 		1EEA4C3E2607A6C6008B4F81 /* PollenAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEA4C3D2607A6C6008B4F81 /* PollenAppUITests.swift */; };
@@ -77,14 +69,6 @@
 		1E262DF52608331900265532 /* HomeChartDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChartDataView.swift; sourceTree = "<group>"; };
 		1EE97DCE260A39430074AE99 /* MultiLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLine.swift; sourceTree = "<group>"; };
 		1EE97DE9260BCD760074AE99 /* PullToRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
-		1EE97DF7260BDB5D0074AE99 /* BBRefreshableScrollView */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BBRefreshableScrollView; sourceTree = "<group>"; };
-		1EE97DFC260BDB8B0074AE99 /* BBRefreshState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBRefreshState.swift; sourceTree = "<group>"; };
-		1EE97DFD260BDB8B0074AE99 /* BBPositionIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBPositionIndicatorView.swift; sourceTree = "<group>"; };
-		1EE97DFE260BDB8B0074AE99 /* BBActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBActivityIndicatorView.swift; sourceTree = "<group>"; };
-		1EE97DFF260BDB8B0074AE99 /* BBPositionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBPositionType.swift; sourceTree = "<group>"; };
-		1EE97E00260BDB8B0074AE99 /* BBPositionPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBPositionPreferenceKey.swift; sourceTree = "<group>"; };
-		1EE97E01260BDB8B0074AE99 /* BBPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBPosition.swift; sourceTree = "<group>"; };
-		1EE97E02260BDB8B0074AE99 /* BBRefreshableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBRefreshableScrollView.swift; sourceTree = "<group>"; };
 		1EEA4C1D2607A6C5008B4F81 /* PollenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PollenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EEA4C202607A6C5008B4F81 /* PollenAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollenAppApp.swift; sourceTree = "<group>"; };
 		1EEA4C2E2607A6C6008B4F81 /* PollenAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PollenAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,14 +161,6 @@
 		1EEA4C1F2607A6C5008B4F81 /* PollenApp */ = {
 			isa = PBXGroup;
 			children = (
-				1EE97DFE260BDB8B0074AE99 /* BBActivityIndicatorView.swift */,
-				1EE97E01260BDB8B0074AE99 /* BBPosition.swift */,
-				1EE97DFD260BDB8B0074AE99 /* BBPositionIndicatorView.swift */,
-				1EE97E00260BDB8B0074AE99 /* BBPositionPreferenceKey.swift */,
-				1EE97DFF260BDB8B0074AE99 /* BBPositionType.swift */,
-				1EE97E02260BDB8B0074AE99 /* BBRefreshableScrollView.swift */,
-				1EE97DFC260BDB8B0074AE99 /* BBRefreshState.swift */,
-				1EE97DF7260BDB5D0074AE99 /* BBRefreshableScrollView */,
 				1EEA4D4F2607E839008B4F81 /* Views */,
 				1EEA4D4E2607E834008B4F81 /* Model */,
 				1EEA4D4D2607E819008B4F81 /* Network */,
@@ -410,7 +386,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EEA4C5C2607E377008B4F81 /* pollenInfo.json in Resources */,
-				1EE97DF8260BDB5D0074AE99 /* BBRefreshableScrollView in Resources */,
 				1EEA4D312607E74B008B4F81 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,20 +415,15 @@
 				1EEA4D032607E681008B4F81 /* PieChartView.swift in Sources */,
 				1E262DF62608331900265532 /* HomeChartDataView.swift in Sources */,
 				1EEA4D462607E7EC008B4F81 /* ContentView.swift in Sources */,
-				1EE97E05260BDB8B0074AE99 /* BBPositionType.swift in Sources */,
 				1EEA4C882607E41B008B4F81 /* SheetsListModel.swift in Sources */,
 				1EEA4C8B2607E41B008B4F81 /* PollenInfo.swift in Sources */,
 				1EEA4D132607E685008B4F81 /* MultiLineChartView.swift in Sources */,
 				1EEA4C7F2607E416008B4F81 /* NetworkManager.swift in Sources */,
-				1EE97E08260BDB8B0074AE99 /* BBPositionIndicatorView.swift in Sources */,
 				1EEA4D142607E685008B4F81 /* Legend.swift in Sources */,
-				1EE97E07260BDB8B0074AE99 /* BBRefreshState.swift in Sources */,
 				1EEA4C762607E3D9008B4F81 /* PollenInfoView.swift in Sources */,
 				1EEA4D012607E681008B4F81 /* PieChartRow.swift in Sources */,
 				1EEA4C752607E3D9008B4F81 /* ExcelDataRow.swift in Sources */,
-				1EE97E09260BDB8B0074AE99 /* BBPosition.swift in Sources */,
 				1EEA4C212607A6C5008B4F81 /* PollenAppApp.swift in Sources */,
-				1EE97E04260BDB8B0074AE99 /* BBPositionPreferenceKey.swift in Sources */,
 				1EEA4C722607E3D9008B4F81 /* PollenCardView.swift in Sources */,
 				1EEA4D292607E742008B4F81 /* BarChartView.swift in Sources */,
 				1EEA4D042607E681008B4F81 /* PieChartCell.swift in Sources */,
@@ -464,12 +434,10 @@
 				1EE97DCF260A39430074AE99 /* MultiLine.swift in Sources */,
 				1EEA4D182607E685008B4F81 /* Line.swift in Sources */,
 				1EEA4C642607E377008B4F81 /* Persistance.swift in Sources */,
-				1EE97E06260BDB8B0074AE99 /* BBRefreshableScrollView.swift in Sources */,
 				1EEA4C8A2607E41B008B4F81 /* DataArrayModel.swift in Sources */,
 				1EEA4D112607E685008B4F81 /* IndicatorPoint.swift in Sources */,
 				1EEA4C892607E41B008B4F81 /* ExcelDataList.swift in Sources */,
 				1EEA4D022607E681008B4F81 /* PieChartHelpers.swift in Sources */,
-				1EE97E03260BDB8B0074AE99 /* BBActivityIndicatorView.swift in Sources */,
 				1EEA4D122607E685008B4F81 /* LineChartView.swift in Sources */,
 				1EEA4D162607E685008B4F81 /* Path+QuadCurve.swift in Sources */,
 				1EEA4D152607E685008B4F81 /* LineView.swift in Sources */,

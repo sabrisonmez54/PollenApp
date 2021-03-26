@@ -34,7 +34,7 @@ public struct BarChartView : View {
         return self.formSize == ChartForm.extraLarge
     }
     
-    public init(data:ChartData, title: String, legend: String? = nil, style: ChartStyle = Styles.barChartStyleOrangeLight, form: CGSize? = ChartForm.medium, dropShadow: Bool? = true, cornerImage:Image? = Image(systemName: "waveform.path.ecg"), valueSpecifier: String? = "%.1f"){
+    public init(data:ChartData, title: String, legend: String? = nil, style: ChartStyle = Styles.barChartStyleOrangeLight, form: CGSize? = ChartForm.medium, dropShadow: Bool? = true, cornerImage:Image? = Image(systemName: "chart.bar.fill"), valueSpecifier: String? = "%.1f"){
         self.data = data
         self.title = title
         self.legend = legend
@@ -51,8 +51,8 @@ public struct BarChartView : View {
         ZStack{
             Rectangle()
                 .fill(self.colorScheme == .dark ? self.darkModeStyle.backgroundColor : self.style.backgroundColor)
-                .cornerRadius(20)
-                .shadow(color: self.style.dropShadowColor, radius: self.dropShadow ? 8 : 0)
+                .cornerRadius(10)
+                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
             VStack(alignment: .leading){
                 HStack{
                     if(!showValue){

@@ -47,7 +47,7 @@ public struct PieChartView : View {
             Rectangle()
                 .fill(Color(.systemBackground))
                 .cornerRadius(20)
-                .shadow(color: self.style.dropShadowColor, radius: self.dropShadow ? 12 : 0)
+                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
             VStack(alignment: .leading){
                 HStack{
                     if(!showValue){

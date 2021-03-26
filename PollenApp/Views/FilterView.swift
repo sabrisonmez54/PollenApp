@@ -12,12 +12,14 @@ struct FilterView: View {
     
     @State private var selectedCenterIndex = 0
     @State private var searchText = ""
+    @State private var ascending = true
     var frameworks = ["Date", "Pollen Name", "Pollen Count"]
     @State private var selectedFrameworkIndex = 0
     @State private var selectedDateSearchIndex = 0
     @State private var chosenDate = Date()
     @State private var chosenDate2 = Date()
-    
+    var arrayOfNames = ["No filter", "Greater than", "Less than"]
+    @State private var selectedCountFilterIndex = 0
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
@@ -37,7 +39,8 @@ struct FilterView: View {
                             ForEach(0 ..< frameworks.count) {
                                 Text(self.frameworks[$0])
                             }
-                        }
+                        } .padding(.trailing)
+                        .padding(.leading)
                     }
                     Section {
                         if selectedFrameworkIndex == 0 {
@@ -103,23 +106,76 @@ struct FilterView: View {
                                     }
                                 }
                             }
+                            
                         }
                         if selectedFrameworkIndex == 2 {
-                            SearchBar(sText: $searchText).padding(.bottom, 0)
-                            FetchedObjects(
-                                predicate: NSPredicate(format: "self.count.stringValue CONTAINS %@", searchText),
-                                sortDescriptors: [
-                                    NSSortDescriptor(key: "count", ascending: true)
-                                ])
-                            { (pollenLincoln: [PollenLincoln]) in
-                                List {
-                                    ForEach(pollenLincoln) { pollen in
-                                        
-                                        ExcelDataRow(date: pollen.date!, pollenName: pollen.name!, pollenCount: pollen.count)
-                                        
+                            HStack {
+                                    Picker("Filter by", selection: $selectedCountFilterIndex) {
+                                              ForEach(0 ..< arrayOfNames.count) {
+                                                  Text(self.arrayOfNames[$0])
+                                              }
+                                        }
+                              
+                                Toggle("ascending", isOn: $ascending)
+                                    .toggleStyle(SwitchToggleStyle(tint: Color(hexString: "741DF4")))
+                            }
+                            SearchBar(sText: $searchText).keyboardType(.numberPad)
+                            
+                            if selectedCountFilterIndex == 0 {
+                                FetchedObjects(
+                                    predicate: NSPredicate(format: "self.count.stringValue CONTAINS %@", searchText),
+                                    sortDescriptors: [
+                                        NSSortDescriptor(key: "count", ascending: ascending)
+                                    ])
+                                { (pollenLincoln: [PollenLincoln]) in
+                                    List {
+                                        ForEach(pollenLincoln) { pollen in
+                                                ExcelDataRow(date: pollen.date!, pollenName: pollen.name!, pollenCount: pollen.count)
+                                        }
+                                    }
+                                }
+                                
+                            }
+                           
+                            if selectedCountFilterIndex == 1 {
+                                FetchedObjects(
+//                                    predicate: NSPredicate(format: "self.count > %@", Double(searchText) ?? 0 as NSNumber),
+                                    sortDescriptors: [
+                                        NSSortDescriptor(key: "count", ascending: ascending)
+                                    ])
+                                { (pollenLincoln: [PollenLincoln]) in
+                                    List {
+                                        ForEach(pollenLincoln) { pollen in
+                                            let greaterThan = Double(searchText) ?? 0.0
+                                            if pollen.count > greaterThan{
+                                                ExcelDataRow(date: pollen.date!, pollenName: pollen.name!, pollenCount: pollen.count)
+                                            }
+                                            
+                                            
+                                        }
                                     }
                                 }
                             }
+                            if selectedCountFilterIndex == 2 {
+                                FetchedObjects(
+//                                    predicate: NSPredicate(format: "self.count > %@", Double(searchText) ?? 0 as NSNumber),
+                                    sortDescriptors: [
+                                        NSSortDescriptor(key: "count", ascending: ascending)
+                                    ])
+                                { (pollenLincoln: [PollenLincoln]) in
+                                    List {
+                                        ForEach(pollenLincoln) { pollen in
+                                            let lessThan = Double(searchText) ?? 0.0
+                                            if pollen.count < lessThan{
+                                                ExcelDataRow(date: pollen.date!, pollenName: pollen.name!, pollenCount: pollen.count)
+                                            }
+                                            
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                            
                         }
                         
                     }
@@ -127,8 +183,6 @@ struct FilterView: View {
                 }
                 
             } else {
-                
-                
                 
                 Form {
                     Section {
@@ -167,6 +221,7 @@ struct FilterView: View {
                             
                             if selectedDateSearchIndex == 1 {
                                 DatePicker("to", selection: $chosenDate2, displayedComponents: [.date])
+                                
                                 FetchedObjects(
                                     predicate:  NSPredicate(format: "date >= %@ AND date < %@", argumentArray: [chosenDate, chosenDate2]),
                                     sortDescriptors: [
@@ -201,22 +256,76 @@ struct FilterView: View {
                             }
                         }
                         if selectedFrameworkIndex == 2 {
-                            SearchBar(sText: $searchText)
-                            FetchedObjects(
-                                predicate: NSPredicate(format: "self.count.stringValue CONTAINS %@", searchText),
-                                sortDescriptors: [
-                                    NSSortDescriptor(key: "count", ascending: true)
-                                ])
-                            { (pollenCalder: [PollenCalder]) in
-                                List {
-                                    ForEach(pollenCalder) { pollen in
-                                        
-                                        ExcelDataRow(date: pollen.date!, pollenName: pollen.name!, pollenCount: pollen.count)
-                                        
+                            HStack {
+                                    Picker("Filter by", selection: $selectedCountFilterIndex) {
+                                              ForEach(0 ..< arrayOfNames.count) {
+                                                  Text(self.arrayOfNames[$0])
+                                              }
+                                        }
+                              
+                                Toggle("ascending", isOn: $ascending)
+                                    .toggleStyle(SwitchToggleStyle(tint: Colors.OrangeEnd))
+                            }
+                            SearchBar(sText: $searchText).keyboardType(.numberPad)
+                            
+                            if selectedCountFilterIndex == 0 {
+                                FetchedObjects(
+                                    predicate: NSPredicate(format: "self.count.stringValue CONTAINS %@", searchText),
+                                    sortDescriptors: [
+                                        NSSortDescriptor(key: "count", ascending: ascending)
+                                    ])
+                                { (pollenCalder: [PollenCalder]) in
+                                    List {
+                                        ForEach(pollenCalder) { pollen in
+                                                ExcelDataRow(date: pollen.date!, pollenName: pollen.name!, pollenCount: pollen.count)
+                                        }
+                                    }
+                                }
+                                
+                            }
+                           
+                            if selectedCountFilterIndex == 1 {
+                                FetchedObjects(
+//                                    predicate: NSPredicate(format: "self.count > %@", Double(searchText) ?? 0 as NSNumber),
+                                    sortDescriptors: [
+                                        NSSortDescriptor(key: "count", ascending: ascending)
+                                    ])
+                                { (pollenCalder: [PollenCalder]) in
+                                    List {
+                                        ForEach(pollenCalder) { pollen in
+                                            let greaterThan = Double(searchText) ?? 0.0
+                                            if pollen.count > greaterThan{
+                                                ExcelDataRow(date: pollen.date!, pollenName: pollen.name!, pollenCount: pollen.count)
+                                            }
+                                            
+                                            
+                                        }
                                     }
                                 }
                             }
-                        }                        }
+                            if selectedCountFilterIndex == 2 {
+                                FetchedObjects(
+//                                    predicate: NSPredicate(format: "self.count > %@", Double(searchText) ?? 0 as NSNumber),
+                                    sortDescriptors: [
+                                        NSSortDescriptor(key: "count", ascending: ascending)
+                                    ])
+                                { (pollenCalder: [PollenCalder]) in
+                                    List {
+                                        ForEach(pollenCalder) { pollen in
+                                            let lessThan = Double(searchText) ?? 0.0
+                                            if pollen.count < lessThan{
+                                                ExcelDataRow(date: pollen.date!, pollenName: pollen.name!, pollenCount: pollen.count)
+                                            }
+                                            
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                            
+                        }
+                        
+                    }
                 }
             }
         }.navigationTitle("Search")
@@ -233,6 +342,11 @@ struct FilterView: View {
         
         return NSPredicate(format: "date >= %@ AND date < %@", argumentArray: [startOfDay, endOfDay])
     }
+    func test() {
+        var string = "Oak 67%, Mugwort 33%"
+        
+    }
+    
 }
 
 

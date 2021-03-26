@@ -19,7 +19,7 @@ public struct LineChartView: View {
     public var formSize:CGSize
     public var dropShadow: Bool
     public var valueSpecifier:String
-    
+    public var cornerImage: Image
     @State private var touchLocation:CGPoint = .zero
     @State private var showIndicatorDot: Bool = false
     @State private var currentLabel: String = ""
@@ -41,7 +41,8 @@ public struct LineChartView: View {
                 form: CGSize? = ChartForm.medium,
                 rateValue: Int?,
                 dropShadow: Bool? = true,
-                valueSpecifier: String? = "%.1f") {
+                valueSpecifier: String? = "%.1f",
+                cornerImage:Image? = Image(systemName: "waveform.path.ecg")) {
         
         self.data = data
         self.title = title
@@ -54,21 +55,31 @@ public struct LineChartView: View {
         self.valueSpecifier = valueSpecifier!
         self.rateValue = rateValue
 //        self.labels = labels
-    }
+                    self.cornerImage = cornerImage!
+                    
+                }
     
     public var body: some View {
         ZStack(alignment: .center){
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: 10)
                 .fill(self.colorScheme == .dark ? self.darkModeStyle.backgroundColor : self.style.backgroundColor)
                 .frame(width: frame.width, height: 240, alignment: .center)
-                .shadow(color: self.style.dropShadowColor, radius: self.dropShadow ? 8 : 0)
+                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
             VStack(alignment: .leading){
                 if(!self.showIndicatorDot){
                     VStack(alignment: .leading, spacing: 8){
-                        Text(self.title)
-                            .font(.headline)
-                            .bold()
-                            .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.textColor : self.style.textColor)
+                        HStack{
+                            Text(self.title)
+                                .font(.headline)
+                                .bold()
+                                .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.textColor : self.style.textColor)
+                            Spacer()
+                            self.cornerImage
+                                .imageScale(.large)
+                                .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.legendTextColor : self.style.legendTextColor)
+                                .padding(.trailing, 5 )
+                        }
+                       
                         if (self.legend != nil){
                             Text(self.legend!)
                                 .font(.callout)
@@ -85,6 +96,7 @@ public struct LineChartView: View {
                                 }
                                 Text("\(self.rateValue!)%")
                             }
+                            
                         }
                     }
                     .transition(.opacity)
@@ -115,8 +127,8 @@ public struct LineChartView: View {
                          
                     )
                 }
-                .frame(width: frame.width, height: frame.height)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .frame(width: frame.width, height: frame.height + 30)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
                 .offset(x: 0, y: 0)
             }.frame(width: self.formSize.width, height: self.formSize.height)
         }
@@ -153,8 +165,8 @@ public struct LineChartView: View {
 struct WidgetView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-//            LineChartView(data: [8,23,54,32,12,37,7,23,43], title: "Line chart", legend: "Basic")
-//                .environment(\.colorScheme, .light)
+            LineChartView(data: TestData.data, title: "Line chart", legend: "Basic", rateValue: 14)
+                .environment(\.colorScheme, .light)
 //            
 //            LineChartView(data: [282.502, 284.495, 283.51, 285.019, 285.197, 286.118, 288.737, 288.455, 289.391, 287.691, 285.878, 286.46, 286.252, 284.652, 284.129, 284.188], title: "Line chart", legend: "Basic")
 //            .environment(\.colorScheme, .light)

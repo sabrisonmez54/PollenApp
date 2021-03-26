@@ -59,29 +59,29 @@ struct PollenCardView: View {
                 }
             }
             Spacer()
-            if location == "calder" {
-                NavigationLink(destination: DetailView(date: date, pollenName: pollenName, pollenCount: pollenCount, location: location), isActive: $isLinkActive) {
-                    Button(action: {
-                        self.isLinkActive = true
-                    }) {
-                        Image(systemName: "chevron.right.circle")
-                            .imageScale(.large)
-                            .padding()
-                            .foregroundColor(Colors.OrangeEnd)
-                    }
-                }
-            } else {
-                NavigationLink(destination: DetailView(date: date, pollenName: pollenName, pollenCount: pollenCount, location: location), isActive: $isLinkActive) {
-                    Button(action: {
-                        self.isLinkActive = true
-                    }) {
-                        Image(systemName: "chevron.right.circle")
-                            .imageScale(.large)
-                            .padding()
-                            .foregroundColor(Color(hexString: "741DF4"))
-                    }
-                }
-            }
+//            if location == "calder" {
+//                NavigationLink(destination: DetailView(date: date, pollenName: pollenName, pollenCount: pollenCount, location: location), isActive: $isLinkActive) {
+//                    Button(action: {
+//                        self.isLinkActive = true
+//                    }) {
+//                        Image(systemName: "chevron.right.circle")
+//                            .imageScale(.large)
+//                            .padding()
+//                            .foregroundColor(Colors.OrangeEnd)
+//                    }
+//                }
+//            } else {
+//                NavigationLink(destination: DetailView(date: date, pollenName: pollenName, pollenCount: pollenCount, location: location), isActive: $isLinkActive) {
+//                    Button(action: {
+//                        self.isLinkActive = true
+//                    }) {
+//                        Image(systemName: "chevron.right.circle")
+//                            .imageScale(.large)
+//                            .padding()
+//                            .foregroundColor(Color(hexString: "741DF4"))
+//                    }
+//                }
+//            }
             
         }
         
@@ -149,16 +149,4 @@ struct CardModifier: ViewModifier {
     
 }
 
-extension Color {
-    static let lightCard = Color(.white)
-    static let darkCard = Color(.systemGray6)
-    
-    static func backgroundColor(for colorScheme: ColorScheme) -> Color {
-        if colorScheme == .dark {
-            return darkCard
-        } else {
-            return lightCard
-        }
-    }
-}
 

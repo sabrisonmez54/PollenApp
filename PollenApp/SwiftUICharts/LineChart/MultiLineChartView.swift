@@ -72,10 +72,11 @@ public struct MultiLineChartView: View {
     
     public var body: some View {
         ZStack(alignment: .center){
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: 0)
                 .fill(self.colorScheme == .dark ? self.darkModeStyle.backgroundColor : self.style.backgroundColor)
                 .frame(width: frame.width, height: 240, alignment: .center)
                 .shadow(radius: self.dropShadow ? 8 : 0)
+                
             VStack(alignment: .leading){
                 if(!self.showIndicatorDot.contains(true)){
                     VStack(alignment: .leading, spacing: 8){
@@ -142,9 +143,10 @@ public struct MultiLineChartView: View {
                         }
                     }
                 }
-                .frame(width: frame.width, height: frame.height )
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .offset(x: 0, y: 0)
+                .frame(width: frame.width, height: frame.height + 20 )
+                
+                .offset(x: 0, y: 20)
+                
             }.frame(width: self.formSize.width, height: self.formSize.height)
         }
         
