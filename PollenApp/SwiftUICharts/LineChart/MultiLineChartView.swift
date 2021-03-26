@@ -12,13 +12,14 @@ public struct MultiLineChartView: View {
     var data:[MultiLineChartData]
     public var title: String
     public var legend: String?
+    public var labels: [Date]
     public var multiLegend: [(color: Color, location: String)]
     public var style: ChartStyle
     public var darkModeStyle: ChartStyle
     public var formSize: CGSize
     public var dropShadow: Bool
     public var valueSpecifier:String
-    
+    @State private var currentLabelIndex: Int = 0
     @State private var touchLocation:CGPoint = .zero
     @State private var showIndicatorDot: [Bool] = [false,false]
     @State private var currentValue: Double = 2 {
@@ -47,7 +48,8 @@ public struct MultiLineChartView: View {
     var frame = CGSize(width: 180, height: 120)
     private var rateValue: Int?
     
-    public init(data: [([Double], GradientColor)],
+    public init(labels: [Date],
+                data: [([Double], GradientColor)],
                 title: String,
                 legend: String? = nil,
                 multiLegend: [(Color,String)],
@@ -56,7 +58,7 @@ public struct MultiLineChartView: View {
                 rateValue: Int? = nil,
                 dropShadow: Bool = true,
                 valueSpecifier: String = "%.1f") {
-        
+        self.labels = labels
         self.data = data.map({ MultiLineChartData(points: $0.0, gradient: $0.1)})
         self.title = title
         self.legend = legend
@@ -68,6 +70,7 @@ public struct MultiLineChartView: View {
         self.dropShadow = dropShadow
         self.valueSpecifier = valueSpecifier
         self.multiLegend = multiLegend
+        
     }
     
     public var body: some View {
@@ -84,16 +87,16 @@ public struct MultiLineChartView: View {
                             .font(.title)
                             .bold()
                             .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.textColor : self.style.textColor)
-                        if (self.legend != nil){
-                            HStack{
-                                ForEach(0..<self.multiLegend.count) { i in
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .fill(multiLegend[i].color)
-                                        .frame(width: 15, height: 10)
-                                    Text(multiLegend[i].location)
-                                        .font(.callout)
-                                        .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.legendTextColor : self.style.legendTextColor)
-                                }
+                        if (self.legend != nil) {
+                            HStack {
+                                    ForEach(0..<self.multiLegend.count) { i in
+                                        RoundedRectangle(cornerRadius: 5)
+                                            .fill(multiLegend[i].color)
+                                            .frame(width: 15, height: 10)
+                                        Text(multiLegend[i].location)
+                                            .font(.callout)
+                                            .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.legendTextColor : self.style.legendTextColor)
+                                    }
                             }
                         }
                         HStack {
@@ -104,6 +107,9 @@ public struct MultiLineChartView: View {
                             }
                             Text("\(rateValue ?? 0)%")
                         }
+                        Text(self.legend!)
+                            .font(.subheadline)
+                            .foregroundColor(Color(.secondaryLabel))
                     }
                     .transition(.opacity)
                     .animation(.easeIn(duration: 0.1))
@@ -111,9 +117,14 @@ public struct MultiLineChartView: View {
                 }else{
                     HStack{
                         Spacer()
-                        Text("\(self.currentValue, specifier: self.valueSpecifier) pcm")
-                            .font(.system(size: 41, weight: .bold, design: .default))
-                            .offset(x: 0, y: 30)
+                        VStack{
+                            Text("\(labels[self.currentLabelIndex], style: .date)")
+                                .font(.system(size: 22, weight: .bold, design: .default))
+                                .offset(x: 0, y: 30)
+                            Text("\(self.currentValue, specifier: self.valueSpecifier) pcm")
+                                .font(.system(size: 31, weight: .bold, design: .default))
+                                .offset(x: 0, y: 30)
+                        }
                         Spacer()
                     }
                     .transition(.scale)
@@ -162,6 +173,7 @@ public struct MultiLineChartView: View {
         let index:Int = Int(round((toPoint.x)/stepWidth))
         if (index >= 0 && index < points.count){
             self.currentValue = points[index]
+            self.currentLabelIndex = index
             return CGPoint(x: CGFloat(index)*stepWidth, y: CGFloat(points[index])*stepHeight)
         }
         return .zero
@@ -171,8 +183,8 @@ public struct MultiLineChartView: View {
 struct MultiWidgetView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MultiLineChartView(data: [([8,23,54,32,12,37,7,23,43], GradientColors.orange)], title: "Line chart", legend: "Basic", multiLegend: [(color: Colors.GradientNeonBlue,location: "Calder"),(color:Colors.GradientPurple,location: "lincoln")])
-                .environment(\.colorScheme, .light)
+//            MultiLineChartView(data: [([8,23,54,32,12,37,7,23,43], GradientColors.orange)], title: "Line chart", legend: "Basic", multiLegend: [(color: Colors.GradientNeonBlue,location: "Calder"),(color:Colors.GradientPurple,location: "lincoln")])
+//                .environment(\.colorScheme, .light)
         }
     }
 }

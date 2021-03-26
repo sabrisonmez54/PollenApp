@@ -35,13 +35,18 @@ struct FilterView: View {
             if selectedCenterIndex == 0 {
                 Form {
                     Section {
-                        Picker(selection: $selectedFrameworkIndex, label: Text("Search by")) {
-                            ForEach(0 ..< frameworks.count) {
-                                Text(self.frameworks[$0])
-                            }
-                        } .padding(.trailing)
+                        VStack {
+                            Picker(selection: $selectedFrameworkIndex, label: Text("Search by")) {
+                                ForEach(0 ..< frameworks.count) {
+                                    Text(self.frameworks[$0])
+                                }
+                            }.padding(.trailing)
+                            .padding(.leading)
+                        }.padding(.trailing)
                         .padding(.leading)
+                        
                     }
+                    
                     Section {
                         if selectedFrameworkIndex == 0 {
                             
