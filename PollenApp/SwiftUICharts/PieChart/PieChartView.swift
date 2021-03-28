@@ -76,6 +76,9 @@ public struct PieChartView : View {
                 
             }
         }.frame(width: self.formSize.width, height: self.formSize.height)
+        .onDisappear {
+            showValue = false
+        }
     }
 }
 

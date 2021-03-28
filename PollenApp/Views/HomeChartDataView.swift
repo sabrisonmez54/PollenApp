@@ -158,7 +158,7 @@ struct HomeChartDataView: View {
                 { (pollenCalder: [PollenCalder]) in
                     Text("Pollen Make Up of Today:").font(.headline).padding()
                     PieChartView(labels: pieLabelsArray, data: pieValuesArray, title: "Pollen Types", legend: "Percent of Pollen" , form: ChartForm.extraLarge, dropShadow: true).padding()
-                    Text("Pollen Count Within the Last Week:").font(.headline).padding()
+                    Text("Pollen Data Within the Past 7 Days").font(.headline).padding()
                     
                     HStack{
                         BarChartView(data: ChartData(values: barChartArray), title: "Pollen Count", legend: "particles per cubic meter of air", dropShadow: true)
@@ -169,6 +169,7 @@ struct HomeChartDataView: View {
                                  pieLabelsArray .removeAll()
                                  pollenNamesArray .removeAll()
                                  pieValuesArray .removeAll()
+                                
                                 
                             }).onAppear(perform: {
                             

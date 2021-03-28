@@ -30,6 +30,14 @@ struct PollenAppApp: App {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
+                NavigationView {
+                    ChartsView()
+                        .environment(\.managedObjectContext, persistanceContainer.container.viewContext)
+                }
+                .tabItem {
+                    Image(systemName: "chart.bar.xaxis")
+                    Text("Chart")
+                }
 
                 NavigationView {
                     PollenInfoView()

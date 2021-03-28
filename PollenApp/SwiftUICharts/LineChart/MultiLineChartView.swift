@@ -13,6 +13,7 @@ public struct MultiLineChartView: View {
     public var title: String
     public var legend: String?
     public var labels: [Date]
+    public var names: [String]
     public var multiLegend: [(color: Color, location: String)]
     public var style: ChartStyle
     public var darkModeStyle: ChartStyle
@@ -57,8 +58,10 @@ public struct MultiLineChartView: View {
                 form: CGSize = ChartForm.medium,
                 rateValue: Int? = nil,
                 dropShadow: Bool = true,
-                valueSpecifier: String = "%.1f") {
+                valueSpecifier: String = "%.1f",
+                names:[String]) {
         self.labels = labels
+        self.names = names
         self.data = data.map({ MultiLineChartData(points: $0.0, gradient: $0.1)})
         self.title = title
         self.legend = legend
@@ -89,6 +92,19 @@ public struct MultiLineChartView: View {
                             .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.textColor : self.style.textColor)
                         if (self.legend != nil) {
                             HStack {
+                                if (rateValue ?? 0 >= 0){
+                                    Image(systemName: "arrow.up")
+                                }else{
+                                    Image(systemName: "arrow.down")
+                                }
+                                Text("\(rateValue ?? 0)%")
+                            }
+                            Text(self.legend!)
+                                .font(.subheadline)
+                                .foregroundColor(Color(.secondaryLabel))
+                        }
+                        
+                            HStack {
                                     ForEach(0..<self.multiLegend.count) { i in
                                         RoundedRectangle(cornerRadius: 5)
                                             .fill(multiLegend[i].color)
@@ -96,20 +112,13 @@ public struct MultiLineChartView: View {
                                         Text(multiLegend[i].location)
                                             .font(.callout)
                                             .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.legendTextColor : self.style.legendTextColor)
+                                            .fixedSize(horizontal: false, vertical: true)
                                     }
                             }
-                        }
-                        HStack {
-                            if (rateValue ?? 0 >= 0){
-                                Image(systemName: "arrow.up")
-                            }else{
-                                Image(systemName: "arrow.down")
-                            }
-                            Text("\(rateValue ?? 0)%")
-                        }
-                        Text(self.legend!)
-                            .font(.subheadline)
-                            .foregroundColor(Color(.secondaryLabel))
+                        
+                       
+
+                      
                     }
                     .transition(.opacity)
                     .animation(.easeIn(duration: 0.1))
@@ -122,7 +131,11 @@ public struct MultiLineChartView: View {
                                 .font(.system(size: 22, weight: .bold, design: .default))
                                 .offset(x: 0, y: 30)
                             Text("\(self.currentValue, specifier: self.valueSpecifier) pcm")
-                                .font(.system(size: 31, weight: .bold, design: .default))
+                                .font(.system(size: 28, weight: .bold, design: .default))
+                                .offset(x: 0, y: 30)
+                            Text("\(names[self.currentLabelIndex])")
+                                .font(.subheadline)
+                                .fixedSize(horizontal: false, vertical: true)
                                 .offset(x: 0, y: 30)
                         }
                         Spacer()

@@ -26,24 +26,25 @@ struct FilterView: View {
         return formatter
     }()
     
+    
     var body: some View {
         VStack {
             Picker("Favorite Color", selection: $selectedCenterIndex, content: {
-                Text("Lincoln Center").tag(0)
-                Text("Louis Calder").tag(1)
+                Text("Louis Calder").tag(0)
+                Text("Lincoln Center").tag(1)
             }).pickerStyle(SegmentedPickerStyle())
-            if selectedCenterIndex == 0 {
+            .padding(.trailing)
+            .padding(.leading)
+            
+            if selectedCenterIndex == 1 {
                 Form {
                     Section {
-                        VStack {
+                        
                             Picker(selection: $selectedFrameworkIndex, label: Text("Search by")) {
                                 ForEach(0 ..< frameworks.count) {
                                     Text(self.frameworks[$0])
                                 }
-                            }.padding(.trailing)
-                            .padding(.leading)
-                        }.padding(.trailing)
-                        .padding(.leading)
+                            }
                         
                     }
                     
@@ -329,11 +330,25 @@ struct FilterView: View {
                             }
                             
                         }
-                        
                     }
                 }
             }
         }.navigationTitle("Search")
+        .gesture(DragGesture(minimumDistance: 20, coordinateSpace: .global)
+                    .onEnded { value in
+                        let horizontalAmount = value.translation.width as CGFloat
+                        let verticalAmount = value.translation.height as CGFloat
+             
+                        if abs(horizontalAmount) > abs(verticalAmount) {
+                            //                            print(horizontalAmount < 0 ? "left swipe" : "right swipe")
+                            if horizontalAmount < 0 {
+                                selectedCenterIndex = 1
+                            } else {
+                                selectedCenterIndex = 0
+                            }
+                        }
+                    })
+
     }
     
     func predicateForDayUsingDate(_ date: Date) -> NSPredicate {
@@ -347,6 +362,7 @@ struct FilterView: View {
         
         return NSPredicate(format: "date >= %@ AND date < %@", argumentArray: [startOfDay, endOfDay])
     }
+    
     func test() {
         var string = "Oak 67%, Mugwort 33%"
         
