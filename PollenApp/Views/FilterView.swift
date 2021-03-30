@@ -363,10 +363,10 @@ struct FilterView: View {
         return NSPredicate(format: "date >= %@ AND date < %@", argumentArray: [startOfDay, endOfDay])
     }
     
-    func test() {
-        var string = "Oak 67%, Mugwort 33%"
-        
-    }
+//    func test() {
+//        var string = "Oak 67%, Mugwort 33%"
+//        
+//    }
     
 }
 

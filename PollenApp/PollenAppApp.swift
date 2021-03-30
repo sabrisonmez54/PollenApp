@@ -39,12 +39,19 @@ struct PollenAppApp: App {
                     Text("Chart")
                 }
 
+//                NavigationView {
+//                    PollenInfoView()
+//                }
+//                .tabItem {
+//                    Image(systemName: "list.bullet")
+//                    Text("Pollen Types")
+//                }
                 NavigationView {
-                    PollenInfoView()
+                    AboutView()
                 }
                 .tabItem {
-                    Image(systemName: "list.bullet")
-                    Text("Pollen Types")
+                    Image(systemName: "person.fill.questionmark")
+                    Text("About")
                 }
             }
         }
