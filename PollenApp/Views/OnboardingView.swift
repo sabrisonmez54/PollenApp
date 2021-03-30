@@ -18,7 +18,7 @@ struct OnboardingView: View {
                 .frame(alignment: .center)
                 .cornerRadius(10).padding(.leading).padding(.trailing)
             Text("by Sabri Sönmez")
-                .font(Font.title2.bold().lowercaseSmallCaps())
+                .font(Font.title2.bold())
                 .multilineTextAlignment(.center)
             
 //            Spacer(minLength: 20)
