@@ -30,7 +30,7 @@ struct ChartsView: View {
             ScrollView{
                 if selectedCenterIndex == 1 {
                     VStack{
-                        Text("Pollen data within selected time period").font(.headline).padding()
+                        Text("Pollen data within selected time period").font(.headline).padding(.bottom)
                         
                         DatePicker("from", selection: $chosenDate, displayedComponents: [.date]).padding(.leading).padding(.trailing)
                         
@@ -56,7 +56,7 @@ struct ChartsView: View {
                     
                 } else {
                     VStack{
-                        Text("Pollen data within selected time period").font(.headline).padding()
+                        Text("Pollen data within selected time period").font(.headline).padding(.bottom)
                         
                         DatePicker("from", selection: $chosenDate, displayedComponents: [.date]).padding(.leading).padding(.trailing)
                         

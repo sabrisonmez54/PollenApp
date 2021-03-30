@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1E262DF62608331900265532 /* HomeChartDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E262DF52608331900265532 /* HomeChartDataView.swift */; };
 		1E999E1D2610E09C0043840B /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E999E1C2610E09C0043840B /* ChartsView.swift */; };
+		1E999E3C2612CFFC0043840B /* default.v1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E999E3B2612CFFC0043840B /* default.v1.png */; };
 		1EE97DCF260A39430074AE99 /* MultiLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE97DCE260A39430074AE99 /* MultiLine.swift */; };
 		1EE97DE5260B87E80074AE99 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 1EE97DE4260B87E80074AE99 /* Introspect */; };
 		1EE97DEA260BCD760074AE99 /* PullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE97DE9260BCD760074AE99 /* PullToRefreshView.swift */; };
@@ -69,6 +70,7 @@
 /* Begin PBXFileReference section */
 		1E262DF52608331900265532 /* HomeChartDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeChartDataView.swift; sourceTree = "<group>"; };
 		1E999E1C2610E09C0043840B /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
+		1E999E3B2612CFFC0043840B /* default.v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.v1.png; sourceTree = "<group>"; };
 		1EE97DCE260A39430074AE99 /* MultiLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLine.swift; sourceTree = "<group>"; };
 		1EE97DE9260BCD760074AE99 /* PullToRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshView.swift; sourceTree = "<group>"; };
 		1EEA4C1D2607A6C5008B4F81 /* PollenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PollenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +170,7 @@
 				1EEA4D4D2607E819008B4F81 /* Network */,
 				1EEA4D382607E76A008B4F81 /* SwiftUICharts */,
 				1EEA4D302607E74B008B4F81 /* Assets.xcassets */,
+				1E999E3B2612CFFC0043840B /* default.v1.png */,
 				1EEA4C522607E376008B4F81 /* Info.plist */,
 				1EEA4C572607E377008B4F81 /* Persistance.swift */,
 				1EEA4C4F2607E376008B4F81 /* pollenInfo.json */,
@@ -388,6 +391,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E999E3C2612CFFC0043840B /* default.v1.png in Resources */,
 				1EEA4C5C2607E377008B4F81 /* pollenInfo.json in Resources */,
 				1EEA4D312607E74B008B4F81 /* Assets.xcassets in Resources */,
 			);
@@ -603,7 +607,7 @@
 		1EEA4C432607A6C6008B4F81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PollenApp/Preview Content\"";
@@ -625,7 +629,7 @@
 		1EEA4C442607A6C6008B4F81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PollenApp/Preview Content\"";
