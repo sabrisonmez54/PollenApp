@@ -1,0 +1,18 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: Questrial-Regular
+font link: https://fonts.google.com/specimen/Questrial
+font author: Joe Prince
+font author site: https://dribbble.com/joeprince
+
+
+icon designer: Alexander Gussenberg
+icon designer link: /alexander.wamhoff
+        
+
+fontColor: {"hex":"#ffffff"}
+bgColor: {"gradient-0":"#FF782C","gradient-1":"#741DF4"}
+iconColor: {"hex":"#ffffff"}
+
+      
