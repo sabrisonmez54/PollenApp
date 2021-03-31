@@ -2,8 +2,8 @@ import SwiftUI
 
 struct PullToRefreshView: View
 {
-    private static let minRefreshTimeInterval = TimeInterval(0.2)
-    private static let triggerHeight = CGFloat(100)
+    private static let minRefreshTimeInterval = TimeInterval(0.3)
+    private static let triggerHeight = CGFloat(135)
     private static let indicatorHeight = CGFloat(100)
     private static let fullHeight = triggerHeight + indicatorHeight
     
@@ -15,7 +15,7 @@ struct PullToRefreshView: View
     @State private var isRefreshIndicatorVisible = false
     @State private var refreshStartTime: Date? = nil
     
-    init(bg: Color = .white, fg: Color = .black, isEnabled: Bool = true, onRefresh: @escaping () -> Void)
+    init(bg: Color = Color(.systemBackground), fg: Color = Color(.label), isEnabled: Bool = true, onRefresh: @escaping () -> Void)
     {
         self.backgroundColor = bg
         self.foregroundColor = fg
@@ -25,10 +25,13 @@ struct PullToRefreshView: View
     
     var body: some View
     {
+        
         VStack(spacing: 0)
         {
+            
             LazyVStack(spacing: 0)
             {
+                
                 Color.clear
                     .frame(height: Self.triggerHeight)
                     .onAppear
@@ -37,10 +40,12 @@ struct PullToRefreshView: View
                         {
                             withAnimation
                             {
+                                
                                 isRefreshIndicatorVisible = true
                             }
                             refreshStartTime = Date()
                         }
+                        
                     }
                     .onDisappear
                     {
@@ -59,6 +64,8 @@ struct PullToRefreshView: View
             
             indicator
                 .frame(height: Self.indicatorHeight)
+            
+            
         }
         .background(backgroundColor)
         .ignoresSafeArea(edges: .all)
@@ -68,8 +75,9 @@ struct PullToRefreshView: View
     
     private var indicator: some View
     {
-        ProgressView()
+        ProgressView("pull down to refresh data")
             .progressViewStyle(CircularProgressViewStyle(tint: foregroundColor))
             .opacity(isRefreshIndicatorVisible ? 1 : 0)
+        
     }
 }
