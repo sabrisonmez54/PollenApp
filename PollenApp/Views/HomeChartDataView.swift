@@ -287,7 +287,7 @@ extension String  {
 
 extension Color {
     static let lightCard = Color(.white)
-    static let darkCard = Color(.systemGray6)
+    static let darkCard = Color(.systemGray5)
     
     static func backgroundColor(for colorScheme: ColorScheme) -> Color {
         if colorScheme == .dark {

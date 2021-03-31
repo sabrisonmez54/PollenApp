@@ -12,7 +12,7 @@ struct OnboardingView: View {
         // #1
         VStack(alignment: .center ){
             Spacer(minLength: 150)
-            Image("cover")
+            Image("cover-2")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(alignment: .center)

@@ -25,7 +25,7 @@ struct AboutView: View {
                 Spacer()
                 ScrollView {
                     
-                    Image("cover")
+                    Image("cover-2")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(alignment: .center)

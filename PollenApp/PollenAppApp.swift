@@ -16,7 +16,7 @@ struct PollenAppApp: App {
                 NavigationView {
                     ContentView()
                         .environment(\.managedObjectContext, persistanceContainer.container.viewContext)
-                }
+                } .navigationViewStyle(StackNavigationViewStyle())
                 .tabItem {
                     Image(systemName: "homekit")
                     Text("Home")
@@ -25,7 +25,7 @@ struct PollenAppApp: App {
                 NavigationView {
                     FilterView()
                         .environment(\.managedObjectContext, persistanceContainer.container.viewContext)
-                }
+                } .navigationViewStyle(StackNavigationViewStyle())
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
@@ -33,7 +33,7 @@ struct PollenAppApp: App {
                 NavigationView {
                     ChartsView()
                         .environment(\.managedObjectContext, persistanceContainer.container.viewContext)
-                }
+                } .navigationViewStyle(StackNavigationViewStyle())
                 .tabItem {
                     Image(systemName: "chart.bar.xaxis")
                     Text("Chart")
@@ -48,7 +48,7 @@ struct PollenAppApp: App {
 //                }
                 NavigationView {
                     AboutView()
-                }
+                } .navigationViewStyle(StackNavigationViewStyle())
                 .tabItem {
                     Image(systemName: "person.fill.questionmark")
                     Text("About")
