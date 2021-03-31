@@ -115,7 +115,7 @@
 		1EEA4D272607E741008B4F81 /* BarChartRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartRow.swift; sourceTree = "<group>"; };
 		1EEA4D282607E742008B4F81 /* BarChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartCell.swift; sourceTree = "<group>"; };
 		1EEA4D302607E74B008B4F81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../PollenAppSwiftUI/PollenAppSwiftUI/Assets.xcassets; sourceTree = "<group>"; };
-		1EEA4D452607E7EC008B4F81 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = ../../../../.Trash/Views/ContentView.swift; sourceTree = "<group>"; };
+		1EEA4D452607E7EC008B4F81 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = PollenApp/ContentView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
