@@ -83,8 +83,6 @@ struct HomeChartDataView: View {
                                         let pollenArray = item.components(separatedBy: CharacterSet.decimalDigits)
                                         pollenNamesArray.append(pollenArray[0].trimmingCharacters(in: .whitespacesAndNewlines))
                                         
-                                        
-                                        
                                     }
                                     
                                 }
@@ -101,6 +99,8 @@ struct HomeChartDataView: View {
                             var counts: [String: Int] = [:]
                             
                             pollenNamesArray.forEach { counts[$0, default: 0] += 1 }
+                        
+                                
                             var lineChartSorted = [(String,Double)]()
                             for item in counts {
                                 lineChartSorted.append((item.key, Double(item.value)))
@@ -220,20 +220,21 @@ struct HomeChartDataView: View {
                                 let delimetered = pollenName.components(separatedBy: ",")
                                 for item in delimetered {
                                     let pollenArray = item.components(separatedBy: CharacterSet.decimalDigits)
+                                  
                                     let label = pollenArray[0].trimmingCharacters(in: .whitespacesAndNewlines)
-                                    
+                                  
                                     pieLabelsArray.append(String(label))
                                     
                                     let stringArray = item.components(separatedBy: CharacterSet.decimalDigits.inverted)
                                     for item in stringArray {
-                                        pieLabelsArray.append(item)
+                                       
                                         if let number = Double(item) {
                                             pieValuesArray.append(number)
                                             print(number)
                                         }
                                     }
                                 }
-                                print(delimetered)
+                               
                             }
                             else {
                                 let delimetered = pollenName.components(separatedBy: " ")
@@ -242,6 +243,7 @@ struct HomeChartDataView: View {
                                 pieLabelsArray.append(delimetered[0])
                                 //                                print(delimetered)
                             }
+                                print(pieLabelsArray)
                             
                         })
                         LineChartView(data:  ChartData(values: lineChartArray), title: "Pollen Type", legend: "Frequency", rateValue:0, dropShadow: true)

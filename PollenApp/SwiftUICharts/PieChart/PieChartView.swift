@@ -23,11 +23,19 @@ public struct PieChartView : View {
         didSet{
             if(oldValue != self.currentValue && self.showValue) {
                 HapticFeedback.playSelection()
-                print(currentValue)
+              
             }
         }
     }
-   
+    @State private var currentIndex: Int = 0 {
+        didSet{
+            if(oldValue != currentIndex && self.showValue) {
+                HapticFeedback.playSelection()
+                
+            }
+        }
+    }
+    
     public init(labels: [String], data: [Double], title: String, legend: String? = nil, style: ChartStyle = Styles.pieChartStyleOne, form: CGSize? = ChartForm.medium, dropShadow: Bool? = true, valueSpecifier: String? = "%.0f"){
         self.labels = labels
         self.data = data
@@ -55,7 +63,7 @@ public struct PieChartView : View {
                             .font(.headline)
                             .foregroundColor(Color(.label))
                     }else{
-                        Text("\(self.currentValue, specifier: self.valueSpecifier) % \(labels[data.firstIndex(of: self.currentValue) ?? 0]) ")
+                        Text("\(self.currentValue, specifier: self.valueSpecifier) % \(labels[currentIndex])")
                             .font(.headline)
                             .foregroundColor(Color(.label))
                         
@@ -65,7 +73,7 @@ public struct PieChartView : View {
                         .imageScale(.large)
                         .foregroundColor(self.style.legendTextColor)
                 }.padding()
-                PieChartRow(data: data, backgroundColor: self.style.backgroundColor, accentColor: self.style.accentColor, gradient:self.style.gradientColor, showValue: $showValue, currentValue: $currentValue)
+                PieChartRow(data: data, backgroundColor: self.style.backgroundColor, accentColor: self.style.accentColor, gradient:self.style.gradientColor, showValue: $showValue, currentValue: $currentValue, currentIndex: $currentIndex)
                     .foregroundColor(self.style.accentColor).padding(self.legend != nil ? 0 : 12).offset(y:self.legend != nil ? 0 : -10)
                 if(self.legend != nil) {
                     Text(self.legend!)

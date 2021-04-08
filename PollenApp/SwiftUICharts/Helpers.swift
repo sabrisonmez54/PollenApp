@@ -160,6 +160,7 @@ public struct ChartForm {
     public static let large = CGSize(width:360, height:120)
     public static let extraLarge = CGSize(width:360, height:240)
     public static let detail = CGSize(width:180, height:120)
+    public static let cutom = CGSize(width:180, height:120)
     #endif
 }
 

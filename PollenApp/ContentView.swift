@@ -190,7 +190,7 @@ extension ContentView {
                             VStack {
                                
                                 FetchedObjects(
-                                    predicate:  NSPredicate(format: "date >= %@ AND date <= %@", argumentArray: [Calendar.current.date(byAdding: .day, value: -395, to: date)!, Calendar.current.date(byAdding: .day, value: -365, to: date)!]),
+//                                    predicate:  NSPredicate(format: "date >= %@ AND date <= %@", argumentArray: [Calendar.current.date(byAdding: .day, value: -395, to: date)!, Calendar.current.date(byAdding: .day, value: -365, to: date)!]),
                                     sortDescriptors: [
                                         NSSortDescriptor(key: "date", ascending: false)
                                     ])
@@ -205,9 +205,12 @@ extension ContentView {
                                     
                                     HomeChartDataView(date: pollenCalders[0].date!, pollenName: pollenCalders[0].name!, pollenCount: pollenCalders[0].count, location: "calder")
                                         .environment(\.managedObjectContext, persistanceContainer.container.viewContext)
-                                    
-                                    MultiLineChartView(labels: pollenCalders.map { ($0.date ?? date)}, data: [ (pollenCalders.map { $0.count}, GradientColors.orange)], title: "Pollen Data This Month", legend: "particles per cubic meter of air", multiLegend: [ (Colors.OrangeEnd, "Louis Calder"),( Color.clear, "")], form: ChartForm.extraLarge, rateValue: 14, dropShadow:false, names: pollenCalders.map { ($0.name ?? "")}).padding().padding(.bottom)
-                                    Text("\(Calendar.current.date(byAdding: .day, value: -395, to: date)!, style: .date) to \(Calendar.current.date(byAdding: .day, value: -365, to: date)!, style: .date)").font(.headline).padding()
+                                    let labels = pollenCalders.map { ($0.date ?? date)}.prefix(30)
+                                    let counts = pollenCalders.map { $0.count}.prefix(30)
+                                    let names = pollenCalders.map { ($0.name ?? "")}.prefix(30)
+//                                    Text("Most recent 30 entries").font(.headline)
+                                    MultiLineChartView(labels: labels.map { ($0)}, data: [ (counts.map { $0}, GradientColors.orange)], title: "Most recent 30 Entries", legend: "particles per cubic meter of air", multiLegend: [ (Colors.OrangeEnd, "Louis Calder"),( Color.clear, "")], form: ChartForm.extraLarge, rateValue: 14, dropShadow:false, names: names.map { ($0)}).padding().padding(.bottom)
+                                    Text("\(labels.first!, style: .date) to \(labels.last!, style: .date)").font(.headline).padding()
                                 }
     
                             }
@@ -220,7 +223,8 @@ extension ContentView {
                                
     
                                 FetchedObjects(
-                                    predicate:  NSPredicate(format: "date >= %@ AND date <= %@", argumentArray: [Calendar.current.date(byAdding: .day, value: -395, to: date)!, Calendar.current.date(byAdding: .day, value: -365, to: date)!]),
+                                    
+//                                    predicate:  NSPredicate(format: "date >= %@ AND date <= %@", argumentArray: [Calendar.current.date(byAdding: .day, value: -395, to: date)!, Calendar.current.date(byAdding: .day, value: -365, to: date)!]),
                                     sortDescriptors: [
                                         NSSortDescriptor(key: "date", ascending: false)
                                     ])
@@ -233,9 +237,14 @@ extension ContentView {
         
                                     HomeChartDataView(date: pollenLincolns[0].date!, pollenName: pollenLincolns[0].name!, pollenCount: pollenLincolns[0].count, location: "lincoln")
                                         .environment(\.managedObjectContext, persistanceContainer.container.viewContext)
+                                    let labels = pollenLincolns.map { ($0.date ?? date)}.prefix(30)
+                                    let counts = pollenLincolns.map { $0.count}.prefix(30)
+                                    let names = pollenLincolns.map { ($0.name ?? "")}.prefix(30)
+//                                    Text("Most recent 30 Entries").font(.headline)
+                                    MultiLineChartView(labels: labels.map { ($0)} , data: [ (counts.map { $0}, GradientColors.purple)], title: "Most recent 30 Entries", legend: "particles per cubic meter of air", multiLegend: [ (Color(hexString: "741DF4"), "Lincoln Center"),( Color.clear, "")], form: ChartForm.extraLarge, rateValue: 14, dropShadow:false, names: names.map {$0}).padding().padding(.bottom)
                                     
-                                    MultiLineChartView(labels: pollenLincolns.map { ($0.date ?? date)}, data: [ (pollenLincolns.map { $0.count}, GradientColors.purple)], title: "Pollen Data This Month", legend: "particles per cubic meter of air", multiLegend: [ (Color(hexString: "741DF4"), "Lincoln Center"),( Color.clear, "")], form: ChartForm.extraLarge, rateValue: 14, dropShadow:false, names: pollenLincolns.map { ($0.name ?? "")}).padding().padding(.bottom)
-                                    Text("\(Calendar.current.date(byAdding: .day, value: -395, to: date)!, style: .date) to \(Calendar.current.date(byAdding: .day, value: -365, to: date)!, style: .date)").font(.headline).padding()
+                                    Text("\(labels.first!, style: .date) to \(labels.last!, style: .date)").font(.headline).padding()
+
                                 }
 //                                Button(action: {
 //                                              needsAppOnboarding = true
