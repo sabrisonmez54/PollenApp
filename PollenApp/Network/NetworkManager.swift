@@ -18,7 +18,9 @@ class NetworkManager: ObservableObject {
     @Published var lincolnDouble = [Double]()
     
     private let range = "A20:B23"
-    private let api_url_base = "https://spreadsheets.google.com/feeds/list/1JgdxwstIJVet8rVMbegqCS72kFtFLt8jr8v_y-3gVos/1/public/full?alt=json"
+    private let api_key = "AIzaSyDAOv3mnS9Fl_ksQspzppAmUQ-ngyf4ZcQ"
+    private let api_url_base2 = "https://sheets.googleapis.com/v4/spreadsheets/1m2Op3h86NFPQUpPDugqACCJatEhR_-ea_C_0nLNdSOE/values/B2%3ABPY23?majorDimension=ROWS&alt=json&key=AIzaSyDAOv3mnS9Fl_ksQspzppAmUQ-ngyf4ZcQ"
+    private let api_url_base = "https://spreadsheets.google.com/feeds/list/1m2Op3h86NFPQUpPDugqACCJatEhR_-ea_C_0nLNdSOE/1/public/full?alt=json"
     init() {
         loading = true
 //        loadData()
@@ -26,85 +28,52 @@ class NetworkManager: ObservableObject {
     }
     
     public func loadData(onCompletion: @escaping (Bool) -> Void, onError: @escaping (NSError) -> Void) {
-        guard let url = URL(string: "\(api_url_base)") else { return }
+        guard let url = URL(string: "\(api_url_base2)") else { return }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
                 print("some error occured")
             } else {
                 
-                if let urLincolnontent =  data {
+                if let content = data {
                     
-                    do{
-                        let jsonResult = try JSONSerialization.jsonObject(with: urLincolnontent, options: JSONSerialization.ReadingOptions.mutableContainers)
+                    do {
+                        let jsonResult = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers)
                         
                         guard let newValue = jsonResult as? [String: Any] else {
                             print("invalid format")
                             return
                         }
                         
-                        let feedValues = newValue["feed"]! as! Dictionary<String,Any>
-                        //                        print(String(describing: type(of: post_paramsValue)))
-                        let entryValues = feedValues["entry"] as! NSArray
+                        let feedValues = newValue["values"]! as! NSArray
                         
-                        let dateLincoln = entryValues[1] as! Dictionary<String,Any>
-                        let valuesDateLincoln = dateLincoln["content"] as! Dictionary<String,Any>
-                        let castDateLincoln = valuesDateLincoln["$t"] as! String
-                        let parsedDateLincoln = castDateLincoln.components(separatedBy: ", ")
+                        let valuesDateLincoln = feedValues[1] as! NSArray
+                        let valuesPollenCountLincoln = feedValues[2] as! NSArray
+                        let valuesPollenNameLincoln = feedValues[4] as! NSArray
                         
-                        let pollenCountLincoln = entryValues[2] as! Dictionary<String,Any>
-                        let valuesPollenCountLincoln = pollenCountLincoln["content"] as! Dictionary<String,Any>
-                        let castCountLincoln = valuesPollenCountLincoln["$t"] as! String
-                        let parsedPollenCountLincoln = castCountLincoln.components(separatedBy: ", ")
-                        
-                        let pollenNameLincoln = entryValues[4] as! Dictionary<String,Any>
-                        let valuesPollenNameLincoln = pollenNameLincoln["content"] as! Dictionary<String,Any>
-                        let castNameLincoln = valuesPollenNameLincoln["$t"] as! String
-                        let parsedPollenNameLincoln = castNameLincoln.components(separatedBy: ", _")
-                         
-                        let dateCalder = entryValues[18] as! Dictionary<String,Any>
-                        let valuesDateCalder = dateCalder["content"] as! Dictionary<String,Any>
-                        let castDateCalder = valuesDateCalder["$t"] as! String
-                        let parsedDateCalder = castDateCalder.components(separatedBy: ", ")
-                        
-                        let pollenCountCalder = entryValues[19] as! Dictionary<String,Any>
-                        let valuesPollenCountCalder = pollenCountCalder["content"] as! Dictionary<String,Any>
-                        let castCountCalder = valuesPollenCountCalder["$t"] as! String
-                        let parsedPollenCountCalder = castCountCalder.components(separatedBy: ", ")
-                        
-                        let pollenNameCalder = entryValues[21] as! Dictionary<String,Any>
-                        let valuesPollenNameCalder = pollenNameCalder["content"] as! Dictionary<String,Any>
-                        let castNameCalder = valuesPollenNameCalder["$t"] as! String
-                        let parsedPollenNameCalder = castNameCalder.components(separatedBy: ", _")
+                        let valuesDateCalder = feedValues[18] as! NSArray
+                        let valuesPollenCountCalder = feedValues[19] as! NSArray
+                        let valuesPollenNameCalder = feedValues[21] as! NSArray
                                                 
                         DispatchQueue.main.async {
                             self.loading = false
-                           
-                            for i in 0 ..< parsedPollenCountLincoln.count - 1 {
-                                if let index = (parsedDateLincoln[i].range(of: ":")?.upperBound)
-                                {
-                                    // Create String
-                                    let date = String(parsedDateLincoln[i].suffix(from: index)).trimmingCharacters(in: .whitespacesAndNewlines)
-                                    
-                                    self.sheetsData.pollenDatesLincoln.append(date)
-
-                                    self.sheetsData.pollenNamesLincoln.append(String(parsedPollenNameLincoln[i].suffix(from: index).trimmingCharacters(in: .whitespacesAndNewlines)))
-                                    self.sheetsData.pollenCountLincoln.append(String(parsedPollenCountLincoln[i].suffix(from: index).trimmingCharacters(in: .whitespacesAndNewlines)))
-                                }
+                            
+                            for i in 0 ..< valuesPollenCountLincoln.count - 1 {
+                                let date = String(describing: valuesDateLincoln[i]).trimmingCharacters(in: .whitespacesAndNewlines)
+                                self.sheetsData.pollenDatesLincoln.append(date)
+                                let count = String(describing: valuesPollenCountLincoln[i]).trimmingCharacters(in: .whitespacesAndNewlines)
+                                self.sheetsData.pollenCountLincoln.append(count)
+                                let name = String(describing: valuesPollenNameLincoln[i]).trimmingCharacters(in: .whitespacesAndNewlines)
+                                self.sheetsData.pollenNamesLincoln.append(name)
                             }
                             
-                            for i in 0 ..< parsedPollenCountCalder.count - 1 {
-                                if let index = (parsedDateCalder[i].range(of: ":")?.upperBound)
-                                {
-                                    // Create String
-                                    let date = String(parsedDateCalder[i].suffix(from: index)).trimmingCharacters(in: .whitespacesAndNewlines)
-                                    
-                                    self.sheetsData.pollenDatesCalder.append(date)
-
-                                    self.sheetsData.pollenNamesCalder.append(String(parsedPollenNameCalder[i].suffix(from: index).trimmingCharacters(in: .whitespacesAndNewlines)))
-                                    self.sheetsData.pollenCountCalder.append(String(parsedPollenCountCalder[i].suffix(from: index).trimmingCharacters(in: .whitespacesAndNewlines)))
-                                }
+                            for i in 0 ..< valuesPollenCountCalder.count - 1 {
+                                let date = String(describing: valuesDateCalder[i]).trimmingCharacters(in: .whitespacesAndNewlines)
+                                self.sheetsData.pollenDatesCalder.append(date)
+                                let count = String(describing: valuesPollenCountCalder[i]).trimmingCharacters(in: .whitespacesAndNewlines)
+                                self.sheetsData.pollenCountCalder.append(count)
+                                let name = String(describing: valuesPollenNameCalder[i]).trimmingCharacters(in: .whitespacesAndNewlines)
+                                self.sheetsData.pollenNamesCalder.append(name)
                             }
-                            
                             print("data appended")
                             onCompletion(true)
                         }
@@ -118,29 +87,3 @@ class NetworkManager: ObservableObject {
     }
    
 }
-//extension NetworkManager {
-//    
-//    func getYearArrayDouble(_ array: [String]) -> [Double] {
-//        for index in 0...self.sheetsData.pollenCountLincoln.count - 1 {
-//            if(self.sheetsData.pollenDatesLincoln[index] != "-" && self.sheetsData.pollenNamesLincoln[index] != "-") {
-//                
-//                let pollenCountString = self.sheetsData.pollenCountLincoln[index]
-//                var pollenCountDouble = 0.0
-//                if pollenCountString.contains("pcm") {
-//                    let replaced = pollenCountString.replacingOccurrences(of: "pcm", with: "")
-//                    var trimmed = replaced
-//                    if !replaced.contains("."){
-//                        trimmed = replaced.trimmingCharacters(in: .whitespacesAndNewlines)
-//                        trimmed.append(".0")
-//                    }
-//                    
-//                    pollenCountDouble += Double(trimmed) ?? 0.0
-//                    
-//                }
-//                
-//                lincolnDouble.append(pollenCountDouble)
-//            }
-//        }
-//    }
-//    
-//}

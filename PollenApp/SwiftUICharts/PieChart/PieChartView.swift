@@ -56,32 +56,38 @@ public struct PieChartView : View {
                 .fill(Color(.systemBackground))
                 .cornerRadius(20)
                 .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
-            VStack(alignment: .leading){
-                HStack{
-                    if(!showValue){
-                        Text(self.title)
-                            .font(.headline)
-                            .foregroundColor(Color(.label))
-                    }else{
-                        Text("\(self.currentValue, specifier: self.valueSpecifier) % \(labels[currentIndex])")
-                            .font(.headline)
-                            .foregroundColor(Color(.label))
-                        
-                    }
-                    Spacer()
-                    Image(systemName: "chart.pie.fill")
-                        .imageScale(.large)
-                        .foregroundColor(self.style.legendTextColor)
-                }.padding()
-                PieChartRow(data: data, backgroundColor: self.style.backgroundColor, accentColor: self.style.accentColor, gradient:self.style.gradientColor, showValue: $showValue, currentValue: $currentValue, currentIndex: $currentIndex)
-                    .foregroundColor(self.style.accentColor).padding(self.legend != nil ? 0 : 12).offset(y:self.legend != nil ? 0 : -10)
-                if(self.legend != nil) {
-                    Text(self.legend!)
-                        .font(.headline)
-                        .foregroundColor(Color(.secondaryLabel))
-                        .padding()
+            if data.allSatisfy { $0 == 0.0} {
+                Text("There is no percentage of pollen in the air today.").font(.subheadline)
+            } else {
+                VStack(alignment: .leading){
+                    HStack{
+                        if(!showValue){
+                            Text(self.title)
+                                .font(.headline)
+                                .foregroundColor(Color(.label))
+                        }else{
+                            Text("\(self.currentValue, specifier: self.valueSpecifier) % \(labels[currentIndex])")
+                                .font(.headline)
+                                .foregroundColor(Color(.label))
+                            
+                        }
+                        Spacer()
+                        Image(systemName: "chart.pie.fill")
+                            .imageScale(.large)
+                            .foregroundColor(self.style.legendTextColor)
+                    }.padding()
+                   
+                        PieChartRow(data: data, backgroundColor: self.style.backgroundColor, accentColor: self.style.accentColor, gradient:self.style.gradientColor, showValue: $showValue, currentValue: $currentValue, currentIndex: $currentIndex)
+                            .foregroundColor(self.style.accentColor).padding(self.legend != nil ? 0 : 12).offset(y:self.legend != nil ? 0 : -10)
+                        if(self.legend != nil) {
+                            Text(self.legend!)
+                                .font(.headline)
+                                .foregroundColor(Color(.secondaryLabel))
+                                .padding()
+                        }
+                    
                 }
-                
+            
             }
         }.frame(width: self.formSize.width, height: self.formSize.height)
         .onDisappear {

@@ -50,7 +50,7 @@ struct ContentView: View {
         if didAppear == false {
             self.isLoading = true
             appearCount += 1
-            //This is where I loaded my coreData information into normal arrays
+            // This is where I loaded my coreData information into normal arrays
             networkManager.loadData(onCompletion: { (successful) in
                 print(successful)
                 for index in 0...networkManager.sheetsData.pollenDatesLincoln.count - 1 {
@@ -209,7 +209,12 @@ extension ContentView {
                                     let counts = pollenCalders.map { $0.count}.prefix(30)
                                     let names = pollenCalders.map { ($0.name ?? "")}.prefix(30)
 //                                    Text("Most recent 30 entries").font(.headline)
-                                    MultiLineChartView(labels: labels.map { ($0)}, data: [ (counts.map { $0}, GradientColors.orange)], title: "Most recent 30 Entries", legend: "particles per cubic meter of air", multiLegend: [ (Colors.OrangeEnd, "Louis Calder"),( Color.clear, "")], form: ChartForm.extraLarge, rateValue: 14, dropShadow:false, names: names.map { ($0)}).padding().padding(.bottom)
+                                    let secondNum = counts[1]
+                                    let rate = secondNum.isZero ? (((counts.first! - secondNum)) * 100) : (((counts.first! - secondNum) / secondNum) * 100)
+                                   
+//                                    let rate2 = counts.sum() / 30
+                                    
+                                    MultiLineChartView(labels: labels.map { ($0)}, data: [ (counts.map { $0}, GradientColors.orange)], title: "Most recent 30 Entries", legend: "particles per cubic meter of air", multiLegend: [ (Colors.OrangeEnd, "Louis Calder"),( Color.clear, "")], form: ChartForm.extraLarge, rateValue: Int(rate), dropShadow:false, names: names.map { ($0)}).padding().padding(.bottom)
                                     Text("\(labels.first!, style: .date) to \(labels.last!, style: .date)").font(.headline).padding()
                                 }
     
@@ -220,7 +225,7 @@ extension ContentView {
                         }
                         if authPath == 1 {
                             VStack {
-                               
+                                Text("*Lincoln Center Station closed temporarily*").font(.largeTitle).padding()
     
                                 FetchedObjects(
                                     
@@ -240,8 +245,16 @@ extension ContentView {
                                     let labels = pollenLincolns.map { ($0.date ?? date)}.prefix(30)
                                     let counts = pollenLincolns.map { $0.count}.prefix(30)
                                     let names = pollenLincolns.map { ($0.name ?? "")}.prefix(30)
+                                    
+                                    let secondNum = counts[1]
+                                    let rate = secondNum.isZero ? (((counts.first! - secondNum)) * 100) : (((counts.first! - secondNum) / secondNum) * 100)
+//                                    if counts.first! != 0.0 {
+//                                        rate += (((counts.first! - counts.last!) / counts.first!) * 100)
+//                                    }
+                                        
 //                                    Text("Most recent 30 Entries").font(.headline)
-                                    MultiLineChartView(labels: labels.map { ($0)} , data: [ (counts.map { $0}, GradientColors.purple)], title: "Most recent 30 Entries", legend: "particles per cubic meter of air", multiLegend: [ (Color(hexString: "741DF4"), "Lincoln Center"),( Color.clear, "")], form: ChartForm.extraLarge, rateValue: 14, dropShadow:false, names: names.map {$0}).padding().padding(.bottom)
+                                    MultiLineChartView(labels: labels.map { ($0)} , data: [ (counts.map { $0}, GradientColors.purple)], title: "Most recent 30 Entries", legend: "particles per cubic meter of air", multiLegend: [ (Color(hexString: "741DF4"), "Lincoln Center"),( Color.clear, "")], form: ChartForm.extraLarge, rateValue: Int(rate), dropShadow:false, names: names.map {$0}).padding().padding(.bottom)
+                                    
                                     
                                     Text("\(labels.first!, style: .date) to \(labels.last!, style: .date)").font(.headline).padding()
 
@@ -299,4 +312,7 @@ extension ContentView {
             
         }
     }
+}
+extension Sequence where Element: AdditiveArithmetic {
+    func sum() -> Element { reduce(.zero, +) }
 }
